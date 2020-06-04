@@ -39,7 +39,20 @@ class User extends CI_Controller {
     $this->load->view('user/footer',$data);
 	}
 
-	public function Payment() {
+	public function Payment($id) {
+		$data['ordernum'] = "method dapetin num";
+		$method = 0;
+		$this->load->view('user/header',$data);
+		if ($method == 0) {
+			$this->load->view('user/content/payment',$data);
+		} else {
+			$this->load->view('user/content/paymentcod',$data);
+		}
+
+		$this->load->view('user/footer',$data);
+	}
+
+	public function lacakOrder($kode) {
 
 	}
 
@@ -111,6 +124,19 @@ class User extends CI_Controller {
 		       die("gagal");
 		}
 	}
+	}
+
+	public function submitCart() {
+		$kue = $this->user_model->getCookie();
+		$info = $this->db->escape_str($_POST['info']);
+		$nama = $this->db->escape_str($_POST['nama']);
+		$nohp = $this->db->escape_str($_POST['nohp']);
+		$alamat = $this->db->escape_str($_POST['alamat']);
+		$metode = $info = $this->db->escape_str($_POST['metode']);
+		if (!isset($nama) OR !isset($nohp) OR !isset($alamat) OR !isset($metode)) {
+			die("Data tydack lengkap");
+		}
+
 	}
 
 }
