@@ -1,0 +1,116 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class User extends CI_Controller {
+
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see https://codeigniter.com/user_guide/general/urls.html
+	 */
+	 public function __construct()
+{
+    parent::__construct();
+      $this->load->model('user_model');
+
+    $this->config->load('asede', TRUE);
+    $this->load->library('session');
+    $this->load->database();
+}
+
+	public function index($kat = 0)
+	{
+
+		$kue = $this->user_model->getCookie();
+		$data['content'] = $this->user_model->listMenu($kat);
+		$data['katlist'] = $this->user_model->listKat($kat);
+		$this->load->view('user/header',$data);
+    $this->load->view('user/content/home',$data);
+    $this->load->view('user/footer',$data);
+	}
+
+	public function Payment() {
+
+	}
+
+  public function Cart() {
+		$kue = $this->user_model->getCookie();
+    $data['kahfi'] = "kucrit";
+
+
+    $this->load->view('user/header',$data);
+    $this->load->view('user/content/cart',$data);
+    $this->load->view('user/footer',$data);
+  }
+
+	public function cartList() {
+		$kue = $this->user_model->getCookie();
+		if ($kue == "") {
+			die("Gagal memuat keranjang . pastikan fitur Cookie di browser diaktifkan");
+		}
+		echo $this->user_model->getCart($kue);
+	}
+
+	public function updateCart($id)
+ {
+	 $kue = $this->user_model->getCookie();
+	 $id = (int) $this->db->escape_str($id);
+	 $value = (int) $this->db->escape_str($_GET['v']);
+	 $this->user_model->changeCart($id,$value,$kue);
+ }
+
+ public function totalCart() {
+	 $kue = $this->user_model->getCookie();
+	 $this->user_model->totalCart($kue);
+ }
+
+ public function deleteCart($id) {
+	 $kue = $this->user_model->getCookie();
+	 $this->user_model->removeCart($this->db->escape_str($id),$kue);
+ }
+
+	public function addToCart($id) {
+		//
+		$kue = $this->user_model->getCookie();
+		if ($kue == "") {
+			die("gagalc");
+		}
+							$query = $this->db->query("SELECT * FROM `user_cart` WHERE `cookie`= '$kue' AND `menu_id` = '$id'");
+
+				$row = $query->row();
+
+				if (isset($row))
+				{
+					$aidi = $row->id;
+					if ($this->db->simple_query("UPDATE `user_cart` SET `amount` = `amount` + '1' WHERE `user_cart`.`id` = '$aidi';"))
+			{
+						die("sukses");
+			}
+			else
+			{
+						 die("gagal");
+			}
+				} else {
+
+				if ($this->db->simple_query("INSERT INTO `user_cart` (`id`, `cookie`, `menu_id`, `amount`) VALUES (NULL, '$kue', '$id', '1');"))
+		{
+		      die("sukses");
+		}
+		else
+		{
+		       die("gagal");
+		}
+	}
+	}
+
+}
