@@ -118,6 +118,21 @@ public function Order() {
       $this->load->view('admin/footer',$data);
 }
 
+public function analisaMenu() {
+  if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+    $data['content'] = $this->admin_model->analisaMenu();
+
+    $this->load->view('admin/header',$data);
+    $this->load->view('admin/content/analisa-menu',$data);
+
+      $this->load->view('admin/footer',$data);
+}
+
 public function Menu() {
   if (isset($_SESSION['aid'])){
      $aaidi = $_SESSION['aid'];
@@ -206,7 +221,7 @@ public function addMenu() {
       header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
       die("Belum Login");
     }
-    $data["kcrit"] = "bautai";
+    $data["katlist"] = $this->admin_model->listKat();
     $this->load->view('admin/header',$data);
     $this->load->view('admin/content/addmenu',$data);
 
@@ -224,6 +239,41 @@ public function handleAddMenu() {
     $this->admin_model->handleAddMenu();
 
 }
+
+public function Edit($id = 0) {
+  if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+    if ($id == 0 ) {
+      die("ID tidak valid");
+    }
+    $data['id'] = $id;
+    $data['nama'] = $this->admin_model->getMenuInfo($id,3);
+    $katid = $this->admin_model->getMenuInfo($id,1);
+    $data['harga'] = $this->admin_model->getMenuInfo($id,5);
+    $data["katlist"] = $this->admin_model->listKat($katid);
+    $this->load->view('admin/header',$data);
+    $this->load->view('admin/content/editmenu',$data);
+
+      $this->load->view('admin/footer',$data);
+}
+
+public function handleEditMenu($id) {
+  if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+
+    $this->admin_model->handleEditMenu($id);
+
+}
+
+
 
 
 }

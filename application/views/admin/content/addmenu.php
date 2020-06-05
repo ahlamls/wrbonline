@@ -21,7 +21,7 @@
 </div>
 
 <div class="form-group">
-   <label for="gambar">Gambar</label>
+   <label for="gambar">Gambar (Max 3MB)</label>
    <input type="file" class="form-control-file" required="" id="gambar" name="gambar">
  </div>
 
