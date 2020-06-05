@@ -5,7 +5,7 @@ Loading...
 </div>
 <hr>
 <p>Info / Keterangan</p>
-  <textarea rows="4" class="w-100"></textarea>
+  <textarea rows="4" class="w-100" id="info"></textarea>
   <hr>
   <p>Total:</p>
   <h2>Rp <span id="totalprice">0</span></h2>
@@ -16,12 +16,12 @@ Loading...
 <div id="detail" style="display:none">
   <h2>Info Pemesan</h1>
               <div class="form-group">
-            <label for="nama">Nama</label>
+            <label for="nama">Nama Lengkap</label>
             <input type="text" class="form-control" id="nama" placeholder="">
           </div>
           <div class="form-group">
-        <label for="nohp">Nomor Handphone</label>
-        <input type="text" class="form-control" id="nohp" placeholder="">
+        <label for="nohp">Nomor Handphone (08xxxxxx) </clabel>
+        <input type="tel" maxlength="14" minlength="11" class="form-control" id="nohp" placeholder="">
       </div>
       <div class="form-group">
     <label for="alamat">Alamat Lengkap</label>
@@ -38,7 +38,7 @@ Loading...
 
 </div>
 <hr>
-  <button class="btn btn-success w-100">Pesan Sekarang</button>
+  <button class="btn btn-success w-100" onclick="ajax5()">Pesan Sekarang</button>
   <p class="text-muted">Dengan memesan kamu menyetujui syarat dan ketentuan WRB Online</p>
   <br>
 </div>
@@ -158,6 +158,53 @@ function ajax4() {
     xmlhttp.send();
 }
 
+function ajax5() {
+  var metode = 0;
+  if (document.getElementById("nama").value == "" || document.getElementById("alamat").value == "" || document.getElementById("nohp").value == "") {
+    alert("Data masih ada yang belum di isi");
+    return;
+  }
+  if (!document.getElementById("nohp").value.startsWith("08")){
+    alert("Nomor HP harus diawali dengan 08 . +62 diganti jadi 0");
+    return;
+  }
+  if (document.getElementById("nohp").value.length < 11) {
+    alert("Nomor HP tidak valid , terlalu pendek");
+    return;
+  }
+  if ( document.getElementById("option1").checked) {
+    metode = 0;
+  } else if ( document.getElementById("option2").checked ) {
+    metode=1;
+  }
+  $('#loading').modal('show');
+
+  var info = document.getElementById("info").value;
+  var nama = document.getElementById("nama").value;
+  var alamat = document.getElementById("alamat").value;
+  var nohp = document.getElementById("nohp").value;
+
+  var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+
+        if (this.responseText == "gagal" ) {
+          alert("Gagal melakukan pesanan . kesalahan server");
+        }else {
+            window.location.replace("/user/payment/" + this.responseText);
+        }
+
+
+      } else if (this.readyState == 4) {
+        alert("Gagal melakukan pesanan. Pastikan anda terkoneksi internet");
+      }
+    };
+    xmlhttp.open("POST", "/user/submitcart/"  , true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("info=" + info + "&nama=" + nama + "&nohp=" + nohp + "&alamat=" + alamat + "&metode=" + metode);
+
+
+}
 
 
 </script>
@@ -178,6 +225,22 @@ function ajax4() {
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
         <button type="button" onclick="ajax3()" class="btn btn-primary">Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="loading" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <center>
+        <div class="lds-facebook"><div></div><div></div><div></div></div>
+        <p>Loading...</p>
+      </center>
+      </div>
+      <div class="modal-footer">
       </div>
     </div>
   </div>

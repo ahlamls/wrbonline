@@ -1,7 +1,13 @@
 <div class="alert alert-info" role="alert">
-  WRB Online Menerima Pesanan dari jam <b>09:00 - 20:00 WIB</b>
+  WRB Online Menerima Pesanan dari jam <b>09:00 - 21:00 WIB</b> . Pesanan diluar jam tersebut akan di proses esok hari . untuk menu catering mungkin akan diganti dengan menu catering hari selanjutnya
 </div>
+<div class="row">
+  <button type="button"  data-toggle="modal" data-target="#lacakModal" class="btn btn-primary">Lacak Pesanan</button>
+  <a href="https://instagram.com/wrb_catering"><button type="button" class="btn btn-secondary">Instagram</button></a>
+  <a href="https://wa.me/6281398741770?text=Assalamualaikum"><button type="button" class="btn btn-success">WA Admin</button></a>
 
+</div>
+  <hr>
   <div class="form-group">
    <label for="exampleFormControlSelect1">Pilih Kategori</label>
    <select class="form-control" onchange="changekat()" id="katlist">
@@ -40,6 +46,10 @@ function addCart(id) {
     xmlhttp.open("GET", "/user/addtocart/" + id, true);
     xmlhttp.send();
 }
+
+function gotoorder() {
+  window.location.replace("/user/payment/" + document.getElementById("orderinput").value);
+}
 </script>
 
 <!-- Modal -->
@@ -58,6 +68,33 @@ function addCart(id) {
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
         <button type="button" onclick="goToCart()" class="btn btn-primary">Lihat Keranjang</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="lacakModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="lacakModalLabel">Lacak Pesanan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <p>Masukan Nomor Order (WRB-xxxx)</p>
+          <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">WRB-</span>
+  </div>
+  <input type="number" id="orderinput" class="form-control" placeholder="1234" >
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="button" onclick="gotoorder()" class="btn btn-primary">Cek Status Pesanan</button>
       </div>
     </div>
   </div>

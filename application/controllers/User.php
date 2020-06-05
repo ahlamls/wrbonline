@@ -40,14 +40,19 @@ class User extends CI_Controller {
 	}
 
 	public function Payment($id) {
-		$data['ordernum'] = "method dapetin num";
-		$method = 0;
+		$data['aidi'] = $id;
+		$data['waktu'] = $this->user_model->getOrderInfo($id,1);
+		$data['nama'] = $this->user_model->getOrderInfo($id,2);
+		$data['nohp'] = $this->user_model->getOrderInfo($id,3);
+		$data['alamat'] = $this->user_model->getOrderInfo($id,4);
+		$data['info'] = $this->user_model->getOrderInfo($id,5);
+		$data['paid'] = $this->user_model->getOrderInfo($id,6);
+		$data['total'] = number_format($this->user_model->getOrderInfo($id,7));
+		$data['method'] = $this->user_model->getOrderInfo($id,8);
+		$data['content'] = $this->user_model->getOrderCart($id);
 		$this->load->view('user/header',$data);
-		if ($method == 0) {
-			$this->load->view('user/content/payment',$data);
-		} else {
-			$this->load->view('user/content/paymentcod',$data);
-		}
+		$this->load->view('user/content/payment',$data);
+
 
 		$this->load->view('user/footer',$data);
 	}
@@ -84,7 +89,7 @@ class User extends CI_Controller {
 
  public function totalCart() {
 	 $kue = $this->user_model->getCookie();
-	 $this->user_model->totalCart($kue);
+	 die($this->user_model->totalCart($kue));
  }
 
  public function deleteCart($id) {
@@ -132,10 +137,11 @@ class User extends CI_Controller {
 		$nama = $this->db->escape_str($_POST['nama']);
 		$nohp = $this->db->escape_str($_POST['nohp']);
 		$alamat = $this->db->escape_str($_POST['alamat']);
-		$metode = $info = $this->db->escape_str($_POST['metode']);
+		$metode = $this->db->escape_str($_POST['metode']);
 		if (!isset($nama) OR !isset($nohp) OR !isset($alamat) OR !isset($metode)) {
-			die("Data tydack lengkap");
+			die("gagal");
 		}
+		die($this->user_model->submitCart($kue,$info,$nama,$nohp,$alamat,$metode));
 
 	}
 

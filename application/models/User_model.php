@@ -210,6 +210,109 @@ class User_model extends CI_Model {
 
 
       }
-      die(number_format($total));
+      return number_format($total);
+   }
+
+   public function submitCart($kue,$info,$nama,$nohp,$alamat,$metode) {
+     $total =  str_replace(",","",$this->user_model->totalCart($kue));
+     $oid = 0;
+           if ($this->db->simple_query("INSERT INTO `orders` (`id`, `waktu`, `nama`, `nohp`, `alamat`, `info`, `paid`, `totalprice`, `method`, `kue`) VALUES (NULL, NOW(), '$nama', '$nohp', '$alamat', '$info', '0', '$total', '$metode', '$kue');"))
+      {
+          $oid = $this->db->insert_id();
+      }
+      else
+      {
+            die("gagal");
+      }
+
+      $query = $this->db->query("SELECT * FROM `user_cart` WHERE `cookie` = '$kue'");
+
+      foreach ($query->result() as $row)
+      {
+        $aidi = $row->menu_id;
+        $jumlah = $row->amount;
+        $queryx = $this->db->query("SELECT nama,harga FROM `menu` WHERE `id` = '$aidi'");
+
+        $rowx = $queryx->row();
+
+        if (isset($rowx))
+        {
+              $namam = $rowx->nama;
+              $harga = $rowx->harga;
+        } else {
+          $namam = "";
+          $harga = 0;
+        }
+        if ( ! $this->db->simple_query("INSERT INTO `orders_cart` (`id`, `menu_id`, `order_id`, `name`, `harga`, `jumlah`) VALUES (NULL, '$aidi', '$oid', '$namam', '$harga', '$jumlah');"))
+        {
+          die("gagal");
+        }
+      }
+      if ( ! $this->db->simple_query("DELETE FROM `user_cart` WHERE `cookie` = '$kue'"))
+      {
+        die("gagal");
+      }
+      if ( ! $this->db->simple_query("UPDATE `cookie` SET `name` = '$nama', `nohp` = '$nohp', `alamat` = '$alamat' WHERE `cookie`.`cookie` = '$kue'
+"))
+      {
+
+      }
+
+      return (String) $oid;
+   }
+
+   public function getOrderCart($id) {
+     $id = $this->db->escape_str($id);
+     /**/
+     $query = $this->db->query("SELECT * FROM `orders_cart` WHERE `order_id` = '$id'");
+     $asede = "";
+      foreach ($query->result() as $row)
+      {
+        $menuname = $row->name;
+        $harga = number_format($row->harga);
+        $jumlah = $row->jumlah;
+        $total = number_format($row->harga * $row->jumlah);
+            $asede .="<div class='card'>
+              <div class='card-body'>
+                <p><b>$menuname</b></p>
+                <p class='text-muted'>Rp $harga * $jumlah <span class='badge badge-success'>Rp $total</span></p>
+
+              </div>
+            </div>";
+      }
+      return $asede;
+   }
+
+   public function getOrderInfo($id,$type) {
+     $query = $this->db->query("SELECT * FROM `orders` WHERE `id` = '$id'");
+
+      $row = $query->row();
+
+      if (isset($row))
+      {
+            if ($type == 1) {
+              return $row->waktu;
+            } else if ($type == 2) {
+              return $row->nama;
+            } else if ($type == 3) {
+              return $row->nohp;
+            } else if ($type == 4) {
+              return $row->alamat;
+            } else if ($type == 5) {
+              return $row->info;
+            } else if ($type == 6) {
+              return $row->paid;
+            } else if ($type == 7) {
+              return $row->totalprice;
+            } else if ($type == 8) {
+              return $row->method;
+            } else if ($type == 9) {
+              return $row->kue;
+            } else {
+              return "Invalid Type";
+            }
+      } else {
+        die("Order Tidak ada");
+      }
    }
 }
