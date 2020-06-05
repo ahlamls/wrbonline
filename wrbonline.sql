@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 06, 2020 at 12:36 AM
+-- Generation Time: Jun 06, 2020 at 01:38 AM
 -- Server version: 10.4.13-MariaDB-1:10.4.13+maria~bionic
 -- PHP Version: 7.0.33-29+ubuntu18.04.1+deb.sury.org+1
 
@@ -71,6 +71,7 @@ INSERT INTO `cookie` (`cookie`, `waktu`, `ua`, `name`, `nohp`, `alamat`) VALUES
 ('5d485bakjnmmwheg4i7xqinufmw6kfqf4jz2hnt7o5e6it8y8769698hskftoasknnzfv', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
 ('5o2tqvdf31dyjetmlztxbgnsunb2dqfgsz0rcyvojw144nx1c11a5qebiwvxtgmurofwd', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '', '', ''),
 ('6rq6iv6iqecs90mtonfx26hf7gl24xlq65fezgkyfjw07x21mk7d75p1zkqo6km9j72gf', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
+('7cy0d7x7p2xg182f11lti8j0lt1ttq7qvtla3jfiv6husk5kjwjflzia7ia6vwv45i0rt', '2020-06-06 01:33:41', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/83.0.4103.61 Chrome/83.0.4103.61 Safari/537.36', 'Baon Cikadap', '084535343143', 'jl asede samalo no 69'),
 ('90acdzbx8ppwtkr2fysr18wtulrdtotdpizk27hbyx2rerib4swndnjby5nxjugm94lo5', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
 ('9n5mb41wcs41lm0pdx3uv49cqloy5l4cq9ir6z27syfy7ul86rwxg6odmgik06706kqbn', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
 ('9qtco6aqouvw69haszprfuivw0ourntt3sk0u2injx8qcjajb1od74ma68c9ke824nv82', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
@@ -159,10 +160,10 @@ CREATE TABLE `menu` (
 
 INSERT INTO `menu` (`id`, `kategori_id`, `waktu`, `nama`, `gambar`, `harga`, `open`) VALUES
 (5, 1, '2020-06-02 07:17:02', 'Gepuk Bandung', 'gepuk.jpeg', 18000, 1),
-(6, 1, '2020-06-02 07:17:02', 'Pepes Tahu (5pcs)', 'pepes.jpeg', 15000, 1),
+(6, 1, '2020-06-02 07:17:02', 'Pepes Tahu (6pcs)', 'pepes.jpeg', 15000, 1),
 (7, 1, '2020-06-02 07:17:02', 'Semur Jengkol', 'jengkol.jpeg', 20000, 1),
 (8, 2, '2020-06-02 07:17:02', 'Ayam Bakar (4pcs)', 'ayam.jpeg', 55000, 1),
-(10, 3, '2020-06-06 00:30:19', 'Ayam Serundeng (5pcs)', 'ysueflqpij022327kyzx0px5drz95gmmr3xif0l5u8lw9rkzqpb9d22uqsah3x9y4kyiqzpc2p702hfohmzew891tnoeevwj2mf46tujtjk92x8iajxvubi7cdd6fm7h.png', 55000, 1);
+(10, 3, '2020-06-06 00:30:19', 'Ayam Serundeng (4pcs)', 'ysueflqpij022327kyzx0px5drz95gmmr3xif0l5u8lw9rkzqpb9d22uqsah3x9y4kyiqzpc2p702hfohmzew891tnoeevwj2mf46tujtjk92x8iajxvubi7cdd6fm7h.png', 55000, 1);
 
 -- --------------------------------------------------------
 
@@ -191,7 +192,8 @@ INSERT INTO `orders` (`id`, `waktu`, `nama`, `nohp`, `alamat`, `info`, `paid`, `
 (666, '2020-06-05 05:20:16', 'Muhammad Fatah', '086969696969', 'jl waria berbatang', 'aku cewe = false', 1, 55000, 0, '2nh7br925nk5q7d5mnowm3fxs48nj6188sinjj92nrudvpetcf52dhifx2ah8q54addkv'),
 (668, '2020-06-05 06:28:30', 'Ulen', '08143531513513', 'jl optima', 'siang malam makan paku', 0, 93000, 1, 'pos8i4lijr48x1mbuxan2vy3n1i9bv1z15lpjjzsmmx1ei86tkbree4mt7k4xmmpsq6z6'),
 (670, '2020-06-05 09:29:58', 'Optima', '08314134133313', 'jl raja tega', '', 0, 15000, 1, 'pos8i4lijr48x1mbuxan2vy3n1i9bv1z15lpjjzsmmx1ei86tkbree4mt7k4xmmpsq6z6'),
-(671, '2020-06-05 09:31:12', 'ulen tiga kali', '08333333333333', 'jl uli ketan', '', 1, 15000, 0, 'pos8i4lijr48x1mbuxan2vy3n1i9bv1z15lpjjzsmmx1ei86tkbree4mt7k4xmmpsq6z6');
+(671, '2020-06-05 09:31:12', 'ulen tiga kali', '08333333333333', 'jl uli ketan', '', 1, 15000, 0, 'pos8i4lijr48x1mbuxan2vy3n1i9bv1z15lpjjzsmmx1ei86tkbree4mt7k4xmmpsq6z6'),
+(672, '2020-06-06 01:34:30', 'Baon Cikadap', '084535343143', 'jl asede samalo no 69', 'pedesnya rata kanan', 1, 165000, 1, '7cy0d7x7p2xg182f11lti8j0lt1ttq7qvtla3jfiv6husk5kjwjflzia7ia6vwv45i0rt');
 
 -- --------------------------------------------------------
 
@@ -214,17 +216,13 @@ CREATE TABLE `orders_cart` (
 
 INSERT INTO `orders_cart` (`id`, `menu_id`, `order_id`, `name`, `harga`, `jumlah`) VALUES
 (1, 5, 666, 'Imam Supriadi', 55000, 1),
-(2, 6, NULL, 'Pepes Tahu (5pcs)', 15000, 1),
-(3, 8, NULL, 'Ayam Bakar (4pcs)', 55000, 2),
-(4, 7, NULL, 'Semur Jengkol', 20000, 2),
 (5, 5, 668, 'Gepuk Bandung', 18000, 1),
 (6, 6, 668, 'Pepes Tahu (5pcs)', 15000, 1),
 (7, 7, 668, 'Semur Jengkol', 20000, 3),
-(8, 6, NULL, 'Pepes Tahu (5pcs)', 15000, 2),
-(9, 8, NULL, 'Ayam Bakar (4pcs)', 55000, 1),
-(10, 7, NULL, 'Semur Jengkol', 20000, 1),
 (11, 6, 670, 'Pepes Tahu (5pcs)', 15000, 1),
-(12, 6, 671, 'Pepes Tahu (5pcs)', 15000, 1);
+(12, 6, 671, 'Pepes Tahu (5pcs)', 15000, 1),
+(13, 10, 672, 'Ayam Serundeng (4pcs)', 55000, 1),
+(14, 8, 672, 'Ayam Bakar (4pcs)', 55000, 2);
 
 -- --------------------------------------------------------
 
@@ -292,8 +290,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `orders_cart`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `menu_id` (`menu_id`),
-  ADD KEY `order_id` (`order_id`);
+  ADD KEY `orders_cart_ibfk_1` (`menu_id`),
+  ADD KEY `orders_cart_ibfk_2` (`order_id`);
 
 --
 -- Indexes for table `user_cart`
@@ -326,17 +324,17 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=672;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=673;
 --
 -- AUTO_INCREMENT for table `orders_cart`
 --
 ALTER TABLE `orders_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `user_cart`
 --
 ALTER TABLE `user_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- Constraints for dumped tables
 --
@@ -357,8 +355,8 @@ ALTER TABLE `orders`
 -- Constraints for table `orders_cart`
 --
 ALTER TABLE `orders_cart`
-  ADD CONSTRAINT `orders_cart_ibfk_1` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
-  ADD CONSTRAINT `orders_cart_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
+  ADD CONSTRAINT `orders_cart_ibfk_1` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `orders_cart_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user_cart`

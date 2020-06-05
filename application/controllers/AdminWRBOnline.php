@@ -133,6 +133,23 @@ public function analisaMenu() {
       $this->load->view('admin/footer',$data);
 }
 
+public function analisaOmset() {
+  if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+    $data['day'] = $this->admin_model->analisaOmset(4);
+    $data['week'] = $this->admin_model->analisaOmset(3);
+    $data['month'] = $this->admin_model->analisaOmset(2);
+    $data['all'] = $this->admin_model->analisaOmset(1);
+    $this->load->view('admin/header',$data);
+    $this->load->view('admin/content/analisa-omset',$data);
+
+      $this->load->view('admin/footer',$data);
+}
+
 public function Menu() {
   if (isset($_SESSION['aid'])){
      $aaidi = $_SESSION['aid'];

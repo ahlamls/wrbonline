@@ -289,5 +289,34 @@ $asede = "";
       return $asede;
       }
 
+      public function analisaOmset($type) {
+        if ($type == 1) {
+          $sql = "SELECT totalprice FROM `orders` WHERE `paid` = 1
+  ";
+        } else if ($type == 2) {
+            $sql = "SELECT totalprice FROM `orders` WHERE `paid` = 1 AND `waktu` BETWEEN CURDATE() - INTERVAL 30 DAY AND NOW()
+
+    ";
+        } else if ($type == 3) {
+            $sql = "SELECT totalprice FROM `orders` WHERE `paid` = 1 AND `waktu` BETWEEN CURDATE() - INTERVAL 7 DAY AND NOW()
+
+
+          ";
+        } else if ($type == 4) {
+            $sql = "SELECT totalprice FROM `orders` WHERE `paid` = 1 AND `waktu` BETWEEN CURDATE() - INTERVAL 1 DAY AND NOW()
+          ";
+          }
+
+          $asede = 0;
+
+          $query = $this->db->query($sql);
+
+          foreach ($query->result() as $row)
+          {
+                $asede = $asede + (int) $row->totalprice;
+          }
+          return number_format($asede);
+      }
+
 
     }
