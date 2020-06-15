@@ -20,8 +20,12 @@ class User_model extends CI_Model {
      foreach ($query->result() as $row)
      {
        $katname = $row->nama;
+       $katdesc = $row->deskripsi;
        $katid=$row->id;
-       $asede.= "<h3>$katname</h3>";
+       $asede.= "<h3><b>$katname</b></h3>";
+       if ($katdesc != "") {
+         $asede.= "<p class='text-muted'>$katdesc</p>";
+       }
        $asede .="<div class='row'>";
        $kosongx = TRUE;
         $queryx = $this->db->query("SELECT * FROM `menu` WHERE `kategori_id` = '$katid'");
