@@ -1,5 +1,10 @@
-<div class="alert alert-info" role="alert">
+<!--<div class="alert alert-info" role="alert">
   WRB Online Menerima Pesanan dari jam <b>09:00 - 21:00 WIB</b> . Pesanan diluar jam tersebut akan di proses esok hari . untuk menu catering mungkin akan diganti dengan menu catering hari selanjutnya
+</div>-->
+
+<div class="alert alert-info" role="alert">
+Selamat datang di layanan WRB catering on line. Kami berharap dapat memenuhi kebutuhan katering pelanggan yang kami hormati.
+Layanan yang ada pada kami adalah catering harian , resto iga, snack, desert, dan lainnya. Silakan pilih kategori di bawah ini
 </div>
 <div class="row">
   <button type="button"  data-toggle="modal" data-target="#lacakModal" class="btn btn-primary">Lacak Pesanan</button>
@@ -9,7 +14,7 @@
 </div>
   <hr>
   <div class="form-group">
-   <label for="exampleFormControlSelect1">Pilih Kategori</label>
+   <label for="exampleFormControlSelect1">Pilih Kategori / Hari</label>
    <select class="form-control" onchange="changekat()" id="katlist">
     <?= $katlist ?>
    </select>

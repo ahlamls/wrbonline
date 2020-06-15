@@ -12,9 +12,9 @@
 <hr>
 <div class="card" style="">
   <div class="card-body">
-    <h5 class="card-title">BANK CONTOH</h5>
-    <h6 class="card-subtitle mb-2"><b>A/N NAMA </h6>
-    <p class="card-text">No Rek : </p>
+    <h5 class="card-title">BANK BCA</h5>
+    <h6 class="card-subtitle mb-2"><b>A/N RANI FITRIANI</h6>
+    <p class="card-text">No Rek : 8090358333</p>
   </div>
 </div>
 <hr>
@@ -29,4 +29,4 @@
 <p>Total:</p>
 <h3>Rp <?= $total?></h3>
 <hr>
-<p>Jika ada masalah bisa hubungi no WA berikut : <b>01234567890</b></p>
+<p>Jika ada masalah bisa hubungi no WA berikut : <b>081398741770</b></p>

@@ -10,7 +10,7 @@
 
 <img style="float:left" src="/logo.jpeg" width="200px">
 
-    <h3 style="margin-left:250px" >WRB ONLINE<br><b>https://online.wrbcatering.id</b></h3> </div>
+    <h3 style="margin-left:250px" >WRB ONLINE<br><b>https://online.wrbcatering.id</b><br>No WA Admin : 081398741770</h3> </div>
 
 <div style="width:50%;float:left; ">
   <p>Order No. <b>WRB-<?= $aidi ?></b></p>
