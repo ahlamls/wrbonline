@@ -29,6 +29,7 @@ class User_model extends CI_Model {
         {
           $gambar = $rowx->gambar;
           $name = $rowx->nama;
+
           $price = "Rp " . number_format($rowx->harga);
           $menuid = $rowx->id;
           $asede .= "<div class='col-6 col-md-3 ' style='padding:15px !important'>
@@ -123,6 +124,7 @@ class User_model extends CI_Model {
 
         if (isset($rowx))
         {
+              $minorder = $rowx->minorder;
                 $menuimage = $rowx->gambar;
                 $menuname = $rowx->nama;
                 $menuprice = number_format($rowx->harga);
@@ -141,7 +143,7 @@ class User_model extends CI_Model {
                        <p class='card-text'  style='margin-bottom: .25rem;'>Rp $menuprice <span class='text-muted'>x $amount</span> | <b>Rp $totalprice</b></p>
         <div class='row' style='margin:0!important;'>
         <button class='btn btn-primary h-margin' onclick='dec($aidi)'>-</button>
-        <input type='number' class='h-margin form-control' onchange='changenum($aidi)' id='quantity-$aidi' name='quantity-$aidi' value='$amount' min='1' max='10'>
+        <input type='number' class='h-margin form-control' onchange='changenum($aidi)' id='quantity-$aidi' name='quantity-$aidi' value='$amount' min='$minorder' max='1000'>
         <button class='btn btn-primary h-margin'  onclick='inc($aidi)'>+</button>
                        <button onclick='hapus($aidi)' class='btn btn-danger h-margin'><b>X</b></button>
                        <div>
@@ -168,7 +170,7 @@ class User_model extends CI_Model {
 
    public function changeCart($id,$value,$kue) {
 
-     if ( (int)$value == 0 OR (int)$value > 10 ) {
+     if ( (int)$value == 0 OR (int)$value > 1000 ) {
        die("gagal");
      }
       if ($this->db->simple_query("UPDATE `user_cart` SET `amount` = '$value' WHERE `user_cart`.`id` = '$id' AND `cookie` = '$kue';"))

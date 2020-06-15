@@ -120,7 +120,16 @@ class User extends CI_Controller {
 			}
 				} else {
 
-				if ($this->db->simple_query("INSERT INTO `user_cart` (`id`, `cookie`, `menu_id`, `amount`) VALUES (NULL, '$kue', '$id', '1');"))
+					$queryx = $this->db->query("SELECT minorder FROM `menu` WHERE `id` = '$id'");
+
+		$rowx = $queryx->row();
+
+		if (isset($rowx))
+		{
+			$minorder = $rowx->minorder;
+		}
+
+				if ($this->db->simple_query("INSERT INTO `user_cart` (`id`, `cookie`, `menu_id`, `amount`) VALUES (NULL, '$kue', '$id', '$minorder');"))
 		{
 		      die("sukses");
 		}
