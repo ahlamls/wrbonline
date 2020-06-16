@@ -3,22 +3,33 @@
 </div>-->
 
 <div class="alert alert-info" role="alert">
-Selamat datang di layanan WRB catering on line. Kami berharap dapat memenuhi kebutuhan katering pelanggan yang kami hormati.
-Layanan yang ada pada kami adalah catering harian , resto iga, snack, desert, dan lainnya. Silakan pilih kategori di bawah ini
+Selamat datang di layanan WRB catering Online
 </div>
-<div class="row">
-  <button type="button"  data-toggle="modal" data-target="#lacakModal" class="btn btn-primary">Lacak Pesanan</button>
-  <a href="https://instagram.com/wrb_catering"><button type="button" class="btn btn-secondary">Instagram</button></a>
-  <a href="https://wa.me/6281398741770?text=Assalamualaikum"><button type="button" class="btn btn-success">WA Admin</button></a>
 
-</div>
+<div class="row katimglist">
+   <?php echo $katimglist ?>
+
+ </div>
+
+
+
   <hr>
-  <div class="form-group">
+  <div class="form-group d-none">
    <label for="exampleFormControlSelect1">Pilih Kategori / Hari</label>
    <select class="form-control" onchange="changekat()" id="katlist">
     <?= $katlist ?>
    </select>
  </div>
+  <hr>
+      <br>
+  <div class="">
+
+    <center>
+    <button type="button"  data-toggle="modal" data-target="#lacakModal" class="btn btn-sm btn-primary">Lacak Pesanan</button>
+    <a href="https://instagram.com/wrb_catering"><button type="button" class="btn btn-sm btn-secondary">Instagram</button></a>
+    <a href="https://wa.me/6281398741770?text=Assalamualaikum"><button type="button" class="btn btn-sm btn-success">WA Admin</button></a>
+</center>
+  </div>
   <hr>
 
 <?php echo $content?>
@@ -28,6 +39,10 @@ function changekat() {
   var e = document.getElementById("katlist");
 var strUser = e.options[e.selectedIndex].value;
 window.location.replace("/kategori/" + strUser);
+}
+
+function pesbarclick(id) {
+window.location.replace("/kategori/" + id);
 }
 
 function goToCart() {

@@ -321,4 +321,34 @@ class User_model extends CI_Model {
         die("Order Tidak ada");
       }
    }
+
+   public function getKatImgList($kat = 0) {
+     $query = $this->db->query("SELECT * FROM `kategori`");
+     $asede = "";
+      foreach ($query->result() as $row)
+      {
+      $aidi = $row->id;
+      $gambar = $row->gambar;
+      $nama = $row->nama;
+      if ($kat == $aidi) {
+        $active = "pesbarimgtextactive";
+        $nama = "<b>" . $nama . "</b>";
+      } else {
+        $active = "";
+      }
+
+     $asede .= " <div class='col-6 pesbar'>
+     <div class='pesbarimg' onclick='pesbarclick($aidi)'>
+     <img src='/data/katimg/$gambar' class='pesbarimgx'>
+     <div class='pesbarimgtext $active'>
+     <h3 class='pesbarimgtextx'>$nama</h3>
+     </div>
+     </div>
+     </div>";
+      }
+
+      return $asede;
+
+
+   }
 }

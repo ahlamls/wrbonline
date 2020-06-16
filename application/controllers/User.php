@@ -34,6 +34,7 @@ class User extends CI_Controller {
 		$kue = $this->user_model->getCookie();
 		$data['content'] = $this->user_model->listMenu($kat);
 		$data['katlist'] = $this->user_model->listKat($kat);
+		$data['katimglist'] = $this->user_model->getKatImgList($kat);
 		$this->load->view('user/header',$data);
     $this->load->view('user/content/home',$data);
     $this->load->view('user/footer',$data);
