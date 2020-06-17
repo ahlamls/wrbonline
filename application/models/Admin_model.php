@@ -320,5 +320,227 @@ $asede = "";
           return number_format($asede);
       }
 
+      public function getPengeluaran($m,$y) {
+        $asede = "";
+        $m = (int) $this->db->escape_str($m);
+        $y = (int) $this->db->escape_str($y);
+        if (($y % 4) == 0) {
+          $kabisat = true;
+        } else {
+          $kabisat = false;
+        }
+        if ($m == 1 OR $m == 3 OR $m == 5 OR $m == 7 OR $m == 8 OR $m == 10 OR $m == 12) {
+          $dtotal = 31;
+        } else if ($m == 2) {
+          if ($kabisat) {
+            $dtotal = 29;
+          } else {
+            $dtotal = 28;
+          }
+        } else {
+          $dtotal = 30;
+        }
+        $tpenghasilan = 0;
+        $tpengeluaran = 0;
+        $tprofit = 0;
+
+        for ($x = 1; $x <= $dtotal; $x++) {
+
+          $yx = (String)$y;
+          $mx = (String)$m;
+          if ($m < 10) {
+            $mx = "0" . (String) $mx;
+          } else {
+            $mx = (String) $mx;
+          }
+          $dx = (String)$x;
+          if ($x < 10) {
+            $dx = "0" . (String) $dx;
+          } else {
+            $dx = (String) $dx;
+          }
+          $date = $yx . "-" . $mx . "-" . $dx;
+
+
+          $pengeluaran = 0;
+
+          $penghasilan = 0;
+          $keterangan = "";
+          $aidi = 0;
+
+          $query = $this->db->query("SELECT totalprice FROM `orders` WHERE `waktu` LIKE '$yx-$mx-$dx%' AND `paid` = '1'");
+
+          foreach ($query->result() as $row)
+          {
+                  $penghasilan = $penghasilan + $row->totalprice;
+          }
+
+          $query = $this->db->query("SELECT * FROM `pengeluaran` WHERE `waktu` = '$yx-$mx-$dx' LIMIT 0,1");
+
+          foreach ($query->result() as $row)
+          {
+                  $pengeluaran = $row->nominal;
+                  $keterangan = $row->keterangan;
+                  $aidi = $row->id;
+          }
+
+
+          $profit = $penghasilan - $pengeluaran ;
+
+                              if ($profit > 0) {
+                                $opit = "opit";
+                              } else {
+                                $opit = "opitnt";
+
+
+                              }
+
+          $tpenghasilan = $tpenghasilan + $penghasilan;
+          $tpengeluaran = $tpengeluaran + $pengeluaran;
+          $tprofit = $tprofit + $profit;
+          if ($tprofit > 0) {
+            $topit = "opit";
+          } else {
+            $topit = "opitnt";
+
+
+          }
+          $penghasilan = number_format($penghasilan);
+          $pengeluaran = number_format($pengeluaran);
+          $profit = number_format($profit);
+
+
+
+          $asede .= "<tr>
+            <th scope='row'>$date</th>
+            <td>Rp $pengeluaran</td>
+            <td>Rp $penghasilan</td>
+            <td class='$opit'>Rp $profit</td>
+            <td>$keterangan</td>
+            <td><a href='/AdminWRBOnline/editPengeluaran/?d=$dx&m=$mx&y=$yx'>Edit</a></td>
+          </tr>";
+        }
+        $tpenghasilan = number_format($tpenghasilan);
+        $tpengeluaran = number_format($tpengeluaran);
+        $tprofit = number_format($tprofit);
+
+        $asede .= "<tr class='table-success'>
+          <th scope='row'>Seluruh Bulan</th>
+          <td><b>Rp $tpengeluaran</b></td>
+          <td><b>Rp $tpenghasilan</b></td>
+          <td class='$topit'><b>Rp $tprofit</b></td>
+            <td></td>
+              <td></td>
+          </tr>";
+        return $asede;
+
+      }
+
+      public function addPengeluaran() {
+        $pengeluaran = (int) $this->db->escape_str($_POST['pengeluaran']);
+        $keterangan = $this->db->escape_str($_POST['keterangan']);
+
+        $today = date("Y-m-d");
+        $query = $this->db->query("SELECT id FROM `pengeluaran` WHERE `waktu` = '$today' LIMIT 0,1");
+        $exist = false;
+        foreach ($query->result() as $row)
+        {
+          $exist = TRUE;
+          $aidi = $row->id;
+        }
+
+        if (!$exist) {
+          if ($this->db->simple_query("INSERT INTO `pengeluaran` (`id`, `waktu`, `nominal`, `keterangan`) VALUES (NULL, '$today', '$pengeluaran', '$keterangan');"))
+            {
+                  header("Location: /AdminWRBOnline/pengeluaran");
+                  die("sukses");
+            }
+            else
+            {
+                  die("gagal menambah pengeluaran");
+            }
+
+        } else {
+          if ($this->db->simple_query("UPDATE `pengeluaran` SET `nominal` = '$pengeluaran', `keterangan` = '$keterangan' WHERE `pengeluaran`.`id` = '$aidi';"))
+            {
+                  header("Location: /AdminWRBOnline/pengeluaran");
+                  die("sukses");
+            }
+            else
+            {
+                  die("gagal mengubah pengeluaran");
+            }
+        }
+        //
+
+      }
+
+      public function editPengeluaran() {
+        $d = (int) $this->db->escape_str($_POST['d']);
+        $m = (int) $this->db->escape_str($_POST['m']);
+        $y = (int) $this->db->escape_str($_POST['y']);
+
+        if ($m > 12) {
+          die("NGACO KAMU");
+        }
+        if ($d > 31) {
+          die("NGACO KAMU");
+        }
+
+        $pengeluaran = (int) $this->db->escape_str($_POST['pengeluaran']);
+        $keterangan = $this->db->escape_str($_POST['keterangan']);
+
+        $datex = $y . "-" . $m . "-" . $d;
+        $query = $this->db->query("SELECT id FROM `pengeluaran` WHERE `waktu` = '$datex' LIMIT 0,1");
+        $exist = false;
+        foreach ($query->result() as $row)
+        {
+          $exist = TRUE;
+          $aidi = $row->id;
+        }
+
+        if (!$exist) {
+          if ($this->db->simple_query("INSERT INTO `pengeluaran` (`id`, `waktu`, `nominal`, `keterangan`) VALUES (NULL, '$datex', '$pengeluaran', '$keterangan');"))
+            {
+                  header("Location: /AdminWRBOnline/pengeluaran");
+                  die("sukses");
+            }
+            else
+            {
+                  die("gagal menambah pengeluaran");
+            }
+
+        } else {
+          if ($this->db->simple_query("UPDATE `pengeluaran` SET `nominal` = '$pengeluaran', `keterangan` = '$keterangan' WHERE `pengeluaran`.`id` = '$aidi';"))
+            {
+                  header("Location: /AdminWRBOnline/pengeluaran");
+                  die("sukses");
+            }
+            else
+            {
+                  die("gagal mengubah pengeluaran");
+            }
+        }
+        //
+
+
+      }
+
+      public function getPengeluaranInfo($date,$type) {
+        $date = $this->db->escape_str($date);
+        $query = $this->db->query("SELECT * FROM `pengeluaran` WHERE `waktu` = '$date' LIMIT 0,1");
+        $exist = false;
+        foreach ($query->result() as $row)
+        {
+          if ($type == 1) {
+            return $row->id;
+          } else if ($type == 2) {
+            return $row->nominal;
+          } else if ($type == 3) {
+            return $row->keterangan;
+          }
+        }
+      }
+
 
     }

@@ -257,6 +257,106 @@ public function handleAddMenu() {
 
 }
 
+public function Pengeluaran() {
+	if (isset($_SESSION['aid'])){
+		 $aaidi = $_SESSION['aid'];
+		} else {
+			header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+			die("Belum Login");
+		}
+		$data['date'] = date("d-m-Y");
+
+		if (!isset($_GET['m'])) {
+			$month = date("m");
+		} else {
+			$month = $_GET['m'];
+
+		}
+		if (!isset($_GET['y'])) {
+			$year = date("Y");
+		} else {
+				$year = $_GET['y'];
+		}
+		$data['m'] = $month;
+		$data['y'] = $year;
+
+		if ($month == 12) {
+			$data['nm'] = 1;
+			$data['ny'] = $year + 1;
+		} else {
+			$data['nm'] = $month + 1;
+			$data['ny'] = $year;
+		}
+
+		if ($month == 1) {
+			$data['pm'] = 12;
+			$data['py'] = $year - 1;
+		} else {
+			$data['pm'] = $month - 1;
+			$data['py'] = $year;
+		}
+
+		if ($month > 12) {
+			die("NGACO KAMU!");
+		}
+
+		$data['content'] = $this->admin_model->getPengeluaran($month,$year);
+		$this->load->view('admin/header',$data);
+		$this->load->view('admin/content/pengeluaran',$data);
+		$this->load->view('admin/footer',$data);
+
+}
+
+public function handleAddPengeluaran() {
+	if (isset($_SESSION['aid'])){
+		 $aaidi = $_SESSION['aid'];
+		} else {
+			header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+			die("Belum Login");
+		}
+		$this->admin_model->addPengeluaran();
+}
+
+public function handleEditPengeluaran() {
+	if (isset($_SESSION['aid'])){
+		 $aaidi = $_SESSION['aid'];
+		} else {
+			header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+			die("Belum Login");
+		}
+		$this->admin_model->editPengeluaran();
+}
+
+public function editPengeluaran() {
+	if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+
+    if ($_GET['d'] == "" OR $_GET['m'] == "" OR $_GET['y'] == "" ) {
+      die("data kosong");
+    }
+
+	  $d = (int) $this->db->escape_str($_GET['d']);
+		$m = (int) $this->db->escape_str($_GET['m']);
+		$y = (int) $this->db->escape_str($_GET['y']);
+
+		$data['date'] = $y . "-" . $m . "-" . $d;
+		$data['d'] = $d;
+		$data['m'] = $m;
+		$data['y'] = $y;
+
+		$data['nominal'] = $this->admin_model->getPengeluaranInfo($data['date'],2);
+		$data['keterangan'] = $this->admin_model->getPengeluaranInfo($data['date'],3);
+
+    $this->load->view('admin/header',$data);
+    $this->load->view('admin/content/editpengeluaran',$data);
+
+      $this->load->view('admin/footer',$data);
+}
+
 public function Edit($id = 0) {
   if (isset($_SESSION['aid'])){
      $aaidi = $_SESSION['aid'];

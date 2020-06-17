@@ -14,7 +14,9 @@ class User_model extends CI_Model {
      $kosong = TRUE;
      if ($kat == 0) {
        $query = $this->db->query("SELECT * FROM `kategori`");
-     } else {
+     } else if ($kat == 7) {
+	$query = $this->db->query("SELECT * FROM `kategori` WHERE `id` <= 7");
+}else {
        $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` = $kat");
      }
      foreach ($query->result() as $row)
@@ -66,6 +68,7 @@ class User_model extends CI_Model {
    public function listKat($kat) {
      if ($kat == 0) {
         $asede = "<option selected value='0'>Semua</option>";
+
      } else {
         $asede = "<option value='0'>Semua</option>";
      }
@@ -323,18 +326,28 @@ class User_model extends CI_Model {
    }
 
    public function getKatImgList($kat = 0) {
-     $query = $this->db->query("SELECT * FROM `kategori`");
+     if ($kat != 0 AND $kat <= 7) {
+	$kat = 7;
+	}
+	$query = $this->db->query("SELECT * FROM `kategori` WHERE `id` > '6'");
      $asede = "";
       foreach ($query->result() as $row)
       {
-      $aidi = $row->id;
+	$aidi = $row->id;
+
       $gambar = $row->gambar;
       $nama = $row->nama;
       if ($kat == $aidi) {
         $active = "pesbarimgtextactive";
         $nama = "<b>" . $nama . "</b>";
-      } else {
+      	if ($aidi == 7) {
+	$nama = "<b>" . "Catering Harian" . "</b>";
+	}
+	} else {
         $active = "";
+	if ($aidi == 7) {
+$nama = "Catering Harian";
+}
       }
 
      $asede .= " <div class='col-6 pesbar'>
