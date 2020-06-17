@@ -165,8 +165,9 @@ class Admin_model extends CI_Model {
         $kategori = $this->db->escape_str($_POST['kategori']);
         $nama = $this->db->escape_str($_POST['nama']);
         $harga = $this->db->escape_str($_POST['harga']);
+        $minorder = $this->db->escape_str($_POST['minorder']);
         $gambar = $this->_uploadImage();
-        if ( ! $this->db->simple_query("INSERT INTO `menu` (`id`, `kategori_id`, `waktu`, `nama`, `gambar`, `harga`, `open`) VALUES (NULL, '$kategori', NOW(), '$nama', '$gambar', '$harga', '1')"))
+        if ( ! $this->db->simple_query("INSERT INTO `menu` (`id`, `kategori_id`, `waktu`, `nama`, `gambar`, `harga`, `open`,`minorder`) VALUES (NULL, '$kategori', NOW(), '$nama', '$gambar', '$harga', '1','$minorder')"))
           {
         die("Terjadi kesalahan " .  $this->db->error()); // Has keys 'code' and 'message'
         } else {
@@ -259,7 +260,8 @@ $asede = "";
       $nama = $this->db->escape_str($_POST['nama']);
       $harga = $this->db->escape_str($_POST['harga']);
       $open = $this->db->escape_str($_POST['open']);
-      if ( ! $this->db->simple_query("UPDATE `menu` SET `kategori_id` = '$kategori', `nama` = '$nama', `harga` = '$harga', `open` = '$open' WHERE `menu`.`id` = '$id'"))
+      $minorder = $this->db->escape_str($_POST['minorder']);
+      if ( ! $this->db->simple_query("UPDATE `menu` SET `kategori_id` = '$kategori', `nama` = '$nama', `harga` = '$harga', `open` = '$open' , `minorder` = '$minorder' WHERE `menu`.`id` = '$id'"))
         {
       die("Terjadi kesalahan " .  $this->db->error()); // Has keys 'code' and 'message'
       } else {

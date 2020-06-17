@@ -21,6 +21,12 @@
 </div>
 
 <div class="form-group">
+<label for="minorder">Minimal Order</label>
+<input type="number" class="form-control" name="minorder" required="" id="minorder" value="1" placeholder="1">
+</div>
+
+
+<div class="form-group">
     <label for="open">Menu Aktif</label>
     <select class="form-control" id="open" required="" name="open">
        <option selected value="1">Ya</option>
