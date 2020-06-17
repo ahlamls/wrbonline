@@ -72,8 +72,8 @@ function changenum(id) {
   if (parseInt(document.getElementById("quantity-" + id).value) == 0) {
     document.getElementById("quantity-" + id).value = 1;
   }
-  if (parseInt(document.getElementById("quantity-" + id).value ) > 1000) {
-    document.getElementById("quantity-" + id).value = 1000;
+  if (parseInt(document.getElementById("quantity-" + id).value ) > 10000) {
+    document.getElementById("quantity-" + id).value = 10000;
   }
   if (parseInt(document.getElementById("quantity-" + id).value) <= parseInt(document.getElementById("quantity-" + id).min)){
     document.getElementById("quantity-" + id).value = parseInt(document.getElementById("quantity-" + id).min);
@@ -90,7 +90,7 @@ if (parseInt(document.getElementById("quantity-" + id).value) !== 1 && parseInt(
 }
 
 function inc(id) {
-  if (parseInt(document.getElementById("quantity-" + id).value ) !==   1000) {
+  if (parseInt(document.getElementById("quantity-" + id).value ) !==   10000) {
     document.getElementById("quantity-" + id).value = parseInt(document.getElementById("quantity-" + id).value) + 1;
       ajax2(id);
   }
