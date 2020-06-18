@@ -1,178 +1,141 @@
--- phpMyAdmin SQL Dump
--- version 4.6.6deb5
--- https://www.phpmyadmin.net/
+-- MariaDB dump 10.17  Distrib 10.4.13-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: localhost:3306
--- Generation Time: Jun 06, 2020 at 01:38 AM
--- Server version: 10.4.13-MariaDB-1:10.4.13+maria~bionic
--- PHP Version: 7.0.33-29+ubuntu18.04.1+deb.sury.org+1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: wrbonline
+-- ------------------------------------------------------
+-- Server version	10.4.13-MariaDB-1:10.4.13+maria~bionic-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `wrbonline`
---
-
--- --------------------------------------------------------
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `admin`
 --
 
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` text NOT NULL,
-  `password` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `password` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `email`, `password`) VALUES
-(1, 'baon@cikadap.com', '922facc3f4e6ca73c7d36ad7640bef968e3692864531b1fa2b3adb234667afa7f3f47c42b2bcdb84472ec99a86e8a48e25d0acbe7c13f76e5d3dee0dd926360d');
-
--- --------------------------------------------------------
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (1,'baon@cikadap.com','922facc3f4e6ca73c7d36ad7640bef968e3692864531b1fa2b3adb234667afa7f3f47c42b2bcdb84472ec99a86e8a48e25d0acbe7c13f76e5d3dee0dd926360d'),(2,'nanan.sajalah@gmail.com','755364485421952702c2146705ef4434d085aaae58fc138383a34317ad9f41e25736806a236594d26af80d3e12a75e623739117a64a6907d8989bb280153c800'),(3,'ranifitriani2882@gmail.com','a69c74f8f8e587caaf11c8a7fb088a7f5a3a7112c152a3480a1799c7cee1088c0d769adab2de05a4c93640f549cbd9c2c44033874ab3cc16b21fff332b8b64e4'),(4,'durodro@gmail.com','4a4da6d5cd9b866ed0b8afe5858897273628324b9c8970b101d4d6eaa19ad25865e83d6764867d0e8667ddf9069f7d6c83313f53a6aff4b76bc80dcb7cdc5d3d');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `cookie`
 --
 
+DROP TABLE IF EXISTS `cookie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cookie` (
   `cookie` varchar(69) NOT NULL,
   `waktu` datetime NOT NULL DEFAULT current_timestamp(),
   `ua` text NOT NULL,
   `name` text DEFAULT NULL,
   `nohp` text DEFAULT NULL,
-  `alamat` text DEFAULT NULL
+  `alamat` text DEFAULT NULL,
+  PRIMARY KEY (`cookie`),
+  UNIQUE KEY `cookie` (`cookie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `cookie`
 --
 
-INSERT INTO `cookie` (`cookie`, `waktu`, `ua`, `name`, `nohp`, `alamat`) VALUES
-('0xpn6hz5rv2zctk69kyl2m9ydaqmj93xamnwyvfxmuik5vyo0pp8xgb85dtzo9q67uzkf', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('0zm91fhts8rf9z87flg6783snl8wru6i3e6vz9ss8x4w872ldnyzuq391pttc44nzsuqg', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '', '', ''),
-('2nh7br925nk5q7d5mnowm3fxs48nj6188sinjj92nrudvpetcf52dhifx2ah8q54addkv', '2020-06-05 03:07:21', 'Go-http-client/1.1', '', '', ''),
-('2zmldb4vl1qbik2vqe4x1viszfdep4aqjize5q8r8amyboc7q4o3wbshh25dsk4g56jap', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '', '', ''),
-('30a92yvy20fzdflzpdnx2zv88077qw6mo3rd8n1my1thfqpr1ujw0aaumkasqdvl91ttp', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '', '', ''),
-('3utw12isql9zzzgjz9z039uxq48uzh1lh8550fm2hrummsk36k7tud1wvrlmnhxoi3olt', '2020-06-05 03:07:21', 'NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com', '', '', ''),
-('3z81ksbylr8cbsydpebrq7g6zd2pdpyj0tvq35n23yus8pn7o42bkvjvt07p62ycynq2q', '2020-06-05 03:07:21', 'Mozilla/5.0 zgrab/0.x', '', '', ''),
-('4pvsascs47gxmdqxgccmkb1oqh3bjo2hoechrqyu92ax4kqfstngla8100u6gq1wuym6d', '2020-06-05 03:07:21', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0', '', '', ''),
-('5a9cwzo9l2cmzz6qdr6x5oz0zlihx1ngj6a1mfzexh6ya5vnutmr89n9u4fqycz1dbw2f', '2020-06-05 03:07:21', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0', '', '', ''),
-('5d485bakjnmmwheg4i7xqinufmw6kfqf4jz2hnt7o5e6it8y8769698hskftoasknnzfv', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('5o2tqvdf31dyjetmlztxbgnsunb2dqfgsz0rcyvojw144nx1c11a5qebiwvxtgmurofwd', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '', '', ''),
-('6rq6iv6iqecs90mtonfx26hf7gl24xlq65fezgkyfjw07x21mk7d75p1zkqo6km9j72gf', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
-('7cy0d7x7p2xg182f11lti8j0lt1ttq7qvtla3jfiv6husk5kjwjflzia7ia6vwv45i0rt', '2020-06-06 01:33:41', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/83.0.4103.61 Chrome/83.0.4103.61 Safari/537.36', 'Baon Cikadap', '084535343143', 'jl asede samalo no 69'),
-('90acdzbx8ppwtkr2fysr18wtulrdtotdpizk27hbyx2rerib4swndnjby5nxjugm94lo5', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
-('9n5mb41wcs41lm0pdx3uv49cqloy5l4cq9ir6z27syfy7ul86rwxg6odmgik06706kqbn', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('9qtco6aqouvw69haszprfuivw0ourntt3sk0u2injx8qcjajb1od74ma68c9ke824nv82', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
-('bwug93lie8lxajzkyaepjt9uycwxkiveoh8hg4dvsw2ckobetjhl0p8zhti4e9hkql5xm', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows; U; Windows NT 6.0;en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6)', '', '', ''),
-('cbnf3z9arpoiba6zyka4pp7yu07p2zbmoe4bd19rbzto1ta4tjrsj1ti7qcnyhzc14pvs', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('dwrbqnrmm41vg9tkfwmdszdba3fx11iw4cxh8hgnvc6dok6v7nsfmswjsxiys7r1pt9m6', '2020-06-05 06:15:22', 'Mozilla/5.0 (Linux; Android 8.0.0; SO-02J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.96 Mobile Safari/537.36', 'Budi Setiawan', '081223785565', 'Jl bihomo'),
-('e7bvo0ttvcqrxeqi9loxjvo3f1xbjple9vjiaeald5450nsykihhy23pbzm0yih5bzwhs', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36', '', '', ''),
-('ec8wt2pimc92quws3sd2limnezuu25img3eyo438dj43uifhvnud557jxm2911p58ayst', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('ecpghokzeel3adwwpkcqyc8onrzqt0xfqobc3dbqcvhd7yxlgiud5sxu8io5oezmjpf8l', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows; U; Windows NT 6.0;en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6)', '', '', ''),
-('etclofjqmqms244ftny1yk04u0d1rkwc9n4bbqoryr7bek4mrio19zwj9kw2irjb9irr2', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('fdnyw9b70bfs1kuezu5vevqx7uskm2amgzek7egg78i1puhfbyy8iddtgrw8o2fgo8nnr', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
-('fou7wks51rrz4tt5zpky7bfl8rkb6r4uvwiezhdlxrm2p7kk5pq41a0gsthq36tybckjw', '2020-06-05 03:07:21', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7', '', '', ''),
-('g6sqlu54yyzmn6c3h0pi7gr3pctebcy047h9skkpq31zve7iwob3mxf6gddc3nsivn24a', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '', '', ''),
-('gj9n2rayzdzk8lpadnx1beez23kgup8dbnuvzmjvefrwr6vw278sj7y5w5d80vso4f8q0', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
-('hX5sEC9RXKKXC3SRvwcrEJEbfsDYScLcpOTzSLyegJ3wL920P8lC5nowA3OKjaLtRAKzQ', '2020-06-05 03:07:21', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/81.0.4044.138 Chrome/81.0.4044.138 Safari/537.36', '', '', ''),
-('ilzzzot8wswl22767o6ql47n8obxybpe0sqhphva50gm0wt76m1qvyydiu69nhtp1z0cg', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows; U; Windows NT 6.0;en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6)', '', '', ''),
-('j8gw37sjfg0nqjqsd4912gt3ms8hf3zojcyw31whml9j6qafbrbbwluuiaiovnmiq9exn', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
-('jq29oia38dsfjavmanxql7uloyh7d66rvbe74vo78udmipai9lqgne65igc36l45haekj', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('k1fuub7qd740w0sonn3jwymk4vbk1cq57ceamx7n1abef5lk7wbhl8hst22j6ma50lmu3', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('kc4m10zgnfl1xwo41axnfz83apuys52by0b89x3p0lpxox5z54n3ex9bqbcibodptke3l', '2020-06-05 03:07:21', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3602.2 Safari/537.36', '', '', ''),
-('kd1nk5iy9ckkclb27ylh2p7svaibh2isbjccu33xi953kj09htxw3u3qr2wgec7fyp1wq', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('kybgep4fxnye8dk8ii1x94t60rmu20u5k8rhry51ficpqd444e7su5lr9ogkh3qwnxask', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
-('lg0yt3p478vc1b98at40ex078q89veqk55v9acsourzu2z6kbrbyqqht4uz76dynpt2r7', '2020-06-05 03:07:21', '', '', '', ''),
-('lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll', '2020-06-05 03:07:21', 'andtonying', 'Kucrit Gayming', '086969696969', 'jl asede ulen'),
-('m6GyuRlOwgxOB7XTyDmSUBFcxn3jgrVIl45oAaNuVvtktoU08PO8FkKywFzPhaRg6tibf', '2020-06-05 03:07:21', 'Mozilla/5.0 (Linux; Android 8.0.0; SO-02J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Mobile Safari/537.36', '', '', ''),
-('mirg5xglqm703wh6avel5k9p6u67lvfqai2o4bo1t7v91xqdcjvwsj4cmx2hd1cx4mwjb', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', '', '', ''),
-('myan78tdgans9b6bdvlojsbyz86lx3kmonvz9l55zzwgapqt6aj540u70diswkhrogta4', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36', '', '', ''),
-('o4pyq1zuj7z0itylcu9stgg0sxxry2oey40s0hi8vti13mjhaxzb17nxlsc2mpoirnoz6', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '', '', ''),
-('piyegc7l05fqh73udw0r7i0dntl9cxit9scbxjurz6y5uhhwgy3jo72buuqvqbkxbzszt', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; Nimbostratus-Bot/v1.3.2; http://cloudsystemnetworks.com)', '', '', ''),
-('pos8i4lijr48x1mbuxan2vy3n1i9bv1z15lpjjzsmmx1ei86tkbree4mt7k4xmmpsq6z6', '2020-06-05 03:07:21', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/83.0.4103.61 Chrome/83.0.4103.61 Safari/537.36', 'ulen tiga kali', '08333333333333', 'jl uli ketan'),
-('qadpbogccyb08dniwo5pbep6emyyr2ubieb6mx0o52dp6t1ozp6b4jeqd31fs3bwpwm7z', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '', '', ''),
-('r3khbgn9tw3jwaz9yfuf8hq1eum827dyg5o1rtsyp2xyyziepvh0gkdz7vjxcqqprsb23', '2020-06-05 03:07:21', 'HTTP Banner Detection (https://security.ipip.net)', '', '', ''),
-('s1zukgtq51t2dwob7yesgtht9ebff5azsjmuvvwje3pwevo7f8iayjm8os2cmo58i54af', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('t4wamb44xq45dgx738xioc6p3312o32ae3twbng8yp0sks34ta411wt6xicbwhonq84p1', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('tiok0t2ffrb2dn6b3ophnu3km5igx17q11f375ulas2rajto0xw09ci5ynobczib0ewec', '2020-06-05 03:07:21', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)', '', '', ''),
-('twhx5hbg2l7cned5v58i3hwe0zb35cli24e32fze0n8w85vi8mkqskt7tpe4bei6x0myw', '2020-06-05 03:07:21', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0', '', '', ''),
-('wfuissfjeqtzxrgy3p5cze6zs1zgole1rf6miqz3q3xbt4y3yy9mgujvpev3e5gizzru9', '2020-06-05 03:07:21', '', '', '', ''),
-('wklqd0cgeac7ul7dw1gtyfqf8t0262ri173sxwwh5rkfjacx36550ak5ceg1q0h6tgkw6', '2020-06-05 03:07:21', 'masscan/1.0 (https://github.com/robertdavidgraham/masscan)', '', '', ''),
-('xt5vnyfd3o65r9r08qi2h9e23t7imvu7r19njd00d9vyx85m6g667lwc2bgwv1jtf90o5', '2020-06-05 03:07:21', 'Mozilla/5.0 zgrab/0.x', '', '', ''),
-('yv0m11vh8h89w2dy2rlou0b5m6y13wlmk304igvnwzza0zja22jahwai3samr8arujov3', '2020-06-05 03:07:21', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '', '', '');
-
--- --------------------------------------------------------
+LOCK TABLES `cookie` WRITE;
+/*!40000 ALTER TABLE `cookie` DISABLE KEYS */;
+INSERT INTO `cookie` VALUES ('0xpn6hz5rv2zctk69kyl2m9ydaqmj93xamnwyvfxmuik5vyo0pp8xgb85dtzo9q67uzkf','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('0zm91fhts8rf9z87flg6783snl8wru6i3e6vz9ss8x4w872ldnyzuq391pttc44nzsuqg','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','','',''),('183prntdlerc9czzysflkhxwrvv2uj32l8wpkz5w4fx6jzk3ik7f4hgdt3bed4ug6u8zn','2020-06-18 09:10:03','','','',''),('296nf4t99xavl2yxwpch54sopbknxu7zzucylvpegw1i39sf78rnga466npz94oaf51af','2020-06-17 20:02:10','Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)','','',''),('2kogphbo6x6py2n1pdnw7eg3ool1qnx3dwlyvigb0e80vkf1r4g1v75rq4gf1mqkhtbd6','2020-06-18 10:09:45','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('2nh7br925nk5q7d5mnowm3fxs48nj6188sinjj92nrudvpetcf52dhifx2ah8q54addkv','2020-06-05 03:07:21','Go-http-client/1.1','','',''),('2otqz2f3a51bxdrqlhstrqnh1g7osdrp5ex1xbigm8hi6wymatjgc4sqm7jmhoppbjwal','2020-06-18 13:38:37','Mozilla/5.0 (Linux; Android 7.1.2; vivo 1611) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36','','',''),('2ua50kxr3wkdx4mo8f2wsexb9z6o7zgg3j1a4bcc2ivnkgjjcq4r3xswprrh3d7760sm5','2020-06-06 04:12:50','Mozilla/5.0 (Linux; Android 8.0.0; SO-02J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.96 Mobile Safari/537.36','Cobain','08123456789','Jl contoh'),('2zmldb4vl1qbik2vqe4x1viszfdep4aqjize5q8r8amyboc7q4o3wbshh25dsk4g56jap','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','','',''),('30a92yvy20fzdflzpdnx2zv88077qw6mo3rd8n1my1thfqpr1ujw0aaumkasqdvl91ttp','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36','','',''),('3cm6m6opbecd5oq6cfezmp380xzn0rvhelwd8fojm2f56zbubgagowxfceiw1r2kxi3ni','2020-06-18 05:46:15','Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36','','',''),('3utw12isql9zzzgjz9z039uxq48uzh1lh8550fm2hrummsk36k7tud1wvrlmnhxoi3olt','2020-06-05 03:07:21','NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com','','',''),('3z81ksbylr8cbsydpebrq7g6zd2pdpyj0tvq35n23yus8pn7o42bkvjvt07p62ycynq2q','2020-06-05 03:07:21','Mozilla/5.0 zgrab/0.x','','',''),('4pvsascs47gxmdqxgccmkb1oqh3bjo2hoechrqyu92ax4kqfstngla8100u6gq1wuym6d','2020-06-05 03:07:21','Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0','','',''),('4q1xags8wvu8p8ctcd13i9fai9yiliguuuddywydbwms3zdazmno9wkh3xnf282ct37f5','2020-06-18 10:10:47','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('57dvhpmsg6xqkltp8i8507ilc42rdpmoywhdih9aesmo2a7zcztezyg381fcyyojrka9u','2020-06-17 21:22:17','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36','Nanan Nuraeni','085755809930','Cipaganti Graha 2 Tahap 2 Nomor c 36, Kelurahan Cigending, Kecematan Ujungberung, Kota Bandung.'),('5a9cwzo9l2cmzz6qdr6x5oz0zlihx1ngj6a1mfzexh6ya5vnutmr89n9u4fqycz1dbw2f','2020-06-05 03:07:21','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0','','',''),('5d485bakjnmmwheg4i7xqinufmw6kfqf4jz2hnt7o5e6it8y8769698hskftoasknnzfv','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('5o2tqvdf31dyjetmlztxbgnsunb2dqfgsz0rcyvojw144nx1c11a5qebiwvxtgmurofwd','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','','',''),('5qre2pqw4ijy2pr8k19zppjiss7cpfs29ep3lvb62bre45u0ygfpe9vxmjxdeczlhlq9g','2020-06-06 01:49:51','WhatsApp/2.20.172 A','','',''),('6daau4hlh15rn2x8bxdks1lpy3ocshquqwwg3auhnl53erm7opq7qy6b96vxlgp09wpwh','2020-06-16 01:48:28','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/81.0.4044.122 Chrome/81.0.4044.122 Safari/537.36','','',''),('6rq6iv6iqecs90mtonfx26hf7gl24xlq65fezgkyfjw07x21mk7d75p1zkqo6km9j72gf','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','','',''),('7cy0d7x7p2xg182f11lti8j0lt1ttq7qvtla3jfiv6husk5kjwjflzia7ia6vwv45i0rt','2020-06-06 01:33:41','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/83.0.4103.61 Chrome/83.0.4103.61 Safari/537.36','Baon Cikadap','084535343143','jl asede samalo no 69'),('87oq89ssg8jqjqkxqpqp34zrama98hpy00qw2xap67rytwfw1uzxqijrp4x75oe6323ar','2020-06-18 09:10:04','Mozilla/5.0 zgrab/0.x','','',''),('87uui8hwvh30ttnmurg2oaq6ugphw9yw81ffc7g2g7p3rqs7lydm7lqj0q3d3cwi16gr7','2020-06-18 10:10:18','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('8slnmohqktm8ga99tkdn5jeieci1jbjihrq2q19vl7cwrk4xtcv3llp0cp6pok994962e','2020-06-18 14:19:29','','','',''),('8y6950pdu9k008puxyhz03mcx4mqng6mfdtdktisgyrgm71vwdye4x5irh5zfifongzoo','2020-06-17 12:22:25','Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0','','',''),('8zbhccs706v5cqr1qoclq6qok3ghlk8lg5et9ehuh2hxmg7rx1caqcgjovqahqa86obbg','2020-06-18 10:03:31','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('90acdzbx8ppwtkr2fysr18wtulrdtotdpizk27hbyx2rerib4swndnjby5nxjugm94lo5','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','','',''),('9n5mb41wcs41lm0pdx3uv49cqloy5l4cq9ir6z27syfy7ul86rwxg6odmgik06706kqbn','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('9pd997xxij3fom5e7aj8tbf8c66law97mic77rermb2iu7hnsi6zdcymikqf7d7by6nao','2020-06-18 10:03:30','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('9qtco6aqouvw69haszprfuivw0ourntt3sk0u2injx8qcjajb1od74ma68c9ke824nv82','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','','',''),('bgv0y0n3y6bu0yjene2jll3eq1ers8r8eyqjrbii28plux7zdz9safn72e481dqs9j9dj','2020-06-18 10:13:57','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('blhgos6e4aru4yx1swp4oap7erufc5zglmny15ky1auasvkbttqe2ev2pwpcw7w6w86ld','2020-06-18 10:09:47','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('bwug93lie8lxajzkyaepjt9uycwxkiveoh8hg4dvsw2ckobetjhl0p8zhti4e9hkql5xm','2020-06-05 03:07:21','Mozilla/5.0 (Windows; U; Windows NT 6.0;en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6)','','',''),('cbnf3z9arpoiba6zyka4pp7yu07p2zbmoe4bd19rbzto1ta4tjrsj1ti7qcnyhzc14pvs','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('dwrbqnrmm41vg9tkfwmdszdba3fx11iw4cxh8hgnvc6dok6v7nsfmswjsxiys7r1pt9m6','2020-06-05 06:15:22','Mozilla/5.0 (Linux; Android 8.0.0; SO-02J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.96 Mobile Safari/537.36','Budi Setiawan','081223785565','Jl bihomo'),('e7bvo0ttvcqrxeqi9loxjvo3f1xbjple9vjiaeald5450nsykihhy23pbzm0yih5bzwhs','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36','','',''),('ec8wt2pimc92quws3sd2limnezuu25img3eyo438dj43uifhvnud557jxm2911p58ayst','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('ecpghokzeel3adwwpkcqyc8onrzqt0xfqobc3dbqcvhd7yxlgiud5sxu8io5oezmjpf8l','2020-06-05 03:07:21','Mozilla/5.0 (Windows; U; Windows NT 6.0;en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6)','','',''),('etclofjqmqms244ftny1yk04u0d1rkwc9n4bbqoryr7bek4mrio19zwj9kw2irjb9irr2','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('f8g5gbbj9pe8gh54rmmul2esaajxneimo6o1vpfi7u1j5n25wo169au46rw6p6oqvzbmi','2020-06-18 10:10:48','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('fdnyw9b70bfs1kuezu5vevqx7uskm2amgzek7egg78i1puhfbyy8iddtgrw8o2fgo8nnr','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','','',''),('fou7wks51rrz4tt5zpky7bfl8rkb6r4uvwiezhdlxrm2p7kk5pq41a0gsthq36tybckjw','2020-06-05 03:07:21','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7','','',''),('g4av1z8y5q1eloemvffmzomwmwh2mw67gb4ub5gm9aaubw9mzkgr5jg392hc33r2y78mw','2020-06-18 10:10:17','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('g6sqlu54yyzmn6c3h0pi7gr3pctebcy047h9skkpq31zve7iwob3mxf6gddc3nsivn24a','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36','','',''),('gj9n2rayzdzk8lpadnx1beez23kgup8dbnuvzmjvefrwr6vw278sj7y5w5d80vso4f8q0','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','','',''),('h5a1kgfjs9xpynrp495p98wkfethf3lz0fwvng58ibp1no429l4f0l6k7scjv71ef1d40','2020-06-18 10:09:44','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('hadgog37bpsaoxpeyjx1zjclpjx5oauza11gz9ogx9ojdctb5ripl8co4zjfxiiqbjtik','2020-06-18 02:52:15','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:61.0) Gecko/20100101 Firefox/72.0','','',''),('hstlw3gh4z3t1suqjdanbwz151jzsvjy3rbguh8w3rkdkfzn3ox7nno2s2gfloy6nth74','2020-06-18 10:09:46','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('hX5sEC9RXKKXC3SRvwcrEJEbfsDYScLcpOTzSLyegJ3wL920P8lC5nowA3OKjaLtRAKzQ','2020-06-05 03:07:21','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/81.0.4044.138 Chrome/81.0.4044.138 Safari/537.36','','',''),('hyj6if3vpmbkshifxwvpull0rmmufuvc35hwd9v8ixq8y5srpmse0diglw73ywkrlv2ld','2020-06-17 16:57:03','Mozilla/5.0 (Linux; Android 8.1.0; SM-G610F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.162 Mobile Safari/537.36','','',''),('ibwj66v9zbl4t3cgof6j9gotge8euwav38j313ayja88t4q13fc9uv7t9jm2t8tcokjwd','2020-06-18 10:10:19','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('ilzzzot8wswl22767o6ql47n8obxybpe0sqhphva50gm0wt76m1qvyydiu69nhtp1z0cg','2020-06-05 03:07:21','Mozilla/5.0 (Windows; U; Windows NT 6.0;en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6)','','',''),('j8gw37sjfg0nqjqsd4912gt3ms8hf3zojcyw31whml9j6qafbrbbwluuiaiovnmiq9exn','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','','',''),('jq29oia38dsfjavmanxql7uloyh7d66rvbe74vo78udmipai9lqgne65igc36l45haekj','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('jwgh3gfmnzk3iqkt4ioktu480gni5aza1lqfu1w4otsmz9zas0wmaljl0xfneyjgz1lgn','2020-06-18 10:03:38','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('k1eq1jvlnw7v1xo1v42wtlu7c5plco9j2cjvx2id11lwi2bab86nhh82blo8r2xz19vya','2020-06-06 16:29:19','Mozilla/5.0 (Linux; Android 6.0.1; SM-G532G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Mobile Safari/537.36','','',''),('k1fuub7qd740w0sonn3jwymk4vbk1cq57ceamx7n1abef5lk7wbhl8hst22j6ma50lmu3','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('k4tlnknxnb86ts3ywdio4x2527434mkap47xop5ryalostlhgc79c56g8741txkrc25tp','2020-06-18 10:09:46','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('k6xgwdofmqeppouc4eusr9c8sn2x3cfe2u0h6ep7url90fo3b51zb3zjv6cs3l6mvvcql','2020-06-15 20:12:17','Mozilla/5.0 (Linux; Android 7.0; Moto C Plus) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.92 Mobile Safari/537.36','','',''),('k85ckj6e213iez470ugq527s2p64ongyb7f3tjpizi4hj82ulqy42leb87vmlqrno9fl7','2020-06-18 10:09:45','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('kc4m10zgnfl1xwo41axnfz83apuys52by0b89x3p0lpxox5z54n3ex9bqbcibodptke3l','2020-06-05 03:07:21','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3602.2 Safari/537.36','','',''),('kd1nk5iy9ckkclb27ylh2p7svaibh2isbjccu33xi953kj09htxw3u3qr2wgec7fyp1wq','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('kmyfaqkgcex2nkhenfemr4a7o1rxpt4cuwok3py6umsjwo75soojqe5dvnyi68nwr0edb','2020-06-18 10:03:39','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('kybgep4fxnye8dk8ii1x94t60rmu20u5k8rhry51ficpqd444e7su5lr9ogkh3qwnxask','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','','',''),('ld8qz2s3k24xu9fq7xn2crfa1a71d003vea3nak0qy5jb08nt4ht4vvnyblslyh0zlswc','2020-06-17 20:07:47','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.128 Safari/537.36','','',''),('lg0yt3p478vc1b98at40ex078q89veqk55v9acsourzu2z6kbrbyqqht4uz76dynpt2r7','2020-06-05 03:07:21','','','',''),('lgm5tx56d81yibapvbnj3d7oxqncd3cv5b8ff1jsp58a2dmi87wzhqpjzhzxp6wi8r2iw','2020-06-06 10:08:10','Mozilla/5.0 (Linux; Android 6.0.1; SM-G532G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Mobile Safari/537.36','Nananana','082216399609','Ujubgberung'),('lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll','2020-06-05 03:07:21','andtonying','Kucrit Gayming','086969696969','jl asede ulen'),('m065pyhgd84k1ecvnpf7ft5zpg1txtyfq3566y0xg7z3d7kizqqlr6py9myriqgnvt910','2020-06-18 09:49:05','Mozilla/5.0 (Linux; Android 8.0.0; SO-02J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.101 Mobile Safari/537.36','','',''),('m2ua6866u3jp1y0q3mct3vor8uxuwkf29maem4jw5xkx33x028nrreec0pf8zri0lie18','2020-06-18 14:13:10','Mozilla/5.0 (Linux; Android 8.1.0; SM-G610F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Mobile Safari/537.36','','',''),('m6GyuRlOwgxOB7XTyDmSUBFcxn3jgrVIl45oAaNuVvtktoU08PO8FkKywFzPhaRg6tibf','2020-06-05 03:07:21','Mozilla/5.0 (Linux; Android 8.0.0; SO-02J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Mobile Safari/537.36','','',''),('madlxvjal95g7xu9u0un6gq464owejkbnki61a852a6ldlr85ngnvv06t25mc6vtq6f8y','2020-06-06 06:40:39','Mozilla/5.0 (Linux; Android 9; SM-J610F Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/81.0.4044.117 Mobile Safari/537.36','Rani','082130555582','Arcamanik'),('mirg5xglqm703wh6avel5k9p6u67lvfqai2o4bo1t7v91xqdcjvwsj4cmx2hd1cx4mwjb','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','','',''),('mtktpx7cq141u5wxrmx1ktg5srf2t2uijzhmm9xp73op5yq3xu2namchauc78sdleryus','2020-06-18 10:12:08','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('myan78tdgans9b6bdvlojsbyz86lx3kmonvz9l55zzwgapqt6aj540u70diswkhrogta4','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36','','',''),('o3mcsxgimdk2ita3ot0brx22hfziorgxdggkbnej325zas39trexy46zo1lz0v9mg3x3p','2020-06-18 10:12:09','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('o46d54e6fl5vc4ysnvgk5tax0d4bzcyd5yp5sfnvcuz5qomhnv9ffie9ld5f02y780pxr','2020-06-18 05:46:15','Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36','','',''),('o4pyq1zuj7z0itylcu9stgg0sxxry2oey40s0hi8vti13mjhaxzb17nxlsc2mpoirnoz6','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','','',''),('olkqimvbu55c5xk1ukvb8w86zu6ph5ucbd9sdoaw7lpkkazuaotzraq4dx05u8ycoctkq','2020-06-07 18:35:55','Mozilla/5.0 (Linux; Android 8.1.0; SM-G610F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.162 Mobile Safari/537.36','','',''),('piyegc7l05fqh73udw0r7i0dntl9cxit9scbxjurz6y5uhhwgy3jo72buuqvqbkxbzszt','2020-06-05 03:07:21','Mozilla/5.0 (compatible; Nimbostratus-Bot/v1.3.2; http://cloudsystemnetworks.com)','','',''),('pn35r6ibkna1f5qjmzqqcbhx1xby5m58bpaedgj6tgjnn99tqbvjweqa7urfyhqar6w7e','2020-06-07 15:42:42','Mozilla/5.0 (Linux; Android 8.0.0; ASUS_X00RD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Mobile Safari/537.36','','',''),('pos8i4lijr48x1mbuxan2vy3n1i9bv1z15lpjjzsmmx1ei86tkbree4mt7k4xmmpsq6z6','2020-06-05 03:07:21','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/83.0.4103.61 Chrome/83.0.4103.61 Safari/537.36','ulen tiga kali','08333333333333','jl uli ketan'),('q07j6nqgogufmyqkpga77wptptcfybvrixkuwckcldf6pq8k7zcw6dtspyypcu3gc403m','2020-06-14 17:02:13','Mozilla/5.0 (Linux; Android 6.0.1; SM-G532G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Mobile Safari/537.36','Nunununu','08080808080808','Lilililililili'),('qadpbogccyb08dniwo5pbep6emyyr2ubieb6mx0o52dp6t1ozp6b4jeqd31fs3bwpwm7z','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36','','',''),('qms55w362loqnq7lsvjxovw7l0xwdnux0467rrlfl7teb3s2jejnogj2f6blqyutu92kb','2020-06-17 16:48:30','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/81.0.4044.122 Chrome/81.0.4044.122 Safari/537.36','','',''),('qnitrpfab8fmsgdxdxg33i9t52nbyg9347hwchim1xrjijbfpsd4rxj49io4b4371un2u','2020-06-18 10:09:44','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('r3khbgn9tw3jwaz9yfuf8hq1eum827dyg5o1rtsyp2xyyziepvh0gkdz7vjxcqqprsb23','2020-06-05 03:07:21','HTTP Banner Detection (https://security.ipip.net)','','',''),('r50pnzzdhecwhyg7a33i2tso6jyfn1jm3tmrqpov38ehlbof2a3t18ufpx4tz1yaqwaa6','2020-06-18 10:09:46','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('rtgi37z79zq5vwpwi4ezrlqm9azefjrgaefzsn1682qnhjpafmozn0ebwwhbrdu2l30rf','2020-06-18 14:00:43','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36','','',''),('s1zukgtq51t2dwob7yesgtht9ebff5azsjmuvvwje3pwevo7f8iayjm8os2cmo58i54af','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('t4wamb44xq45dgx738xioc6p3312o32ae3twbng8yp0sks34ta411wt6xicbwhonq84p1','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('tiok0t2ffrb2dn6b3ophnu3km5igx17q11f375ulas2rajto0xw09ci5ynobczib0ewec','2020-06-05 03:07:21','Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)','','',''),('twhx5hbg2l7cned5v58i3hwe0zb35cli24e32fze0n8w85vi8mkqskt7tpe4bei6x0myw','2020-06-05 03:07:21','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0','','',''),('ufwd2jqx0nfu4c2my9z22b0eoml773nnfeub64deysbl5jn0b8f4yfs5q1qtqljw4sd9w','2020-06-08 06:32:56','Mozilla/5.0 (Linux; Android 7.0; SM-T715Y Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/83.0.4103.96 Safari/537.36','','',''),('ukgi2qbfx834sajyw2pn0ewy0dx8tnbpcesjczw5g5frhdq6fp1yql71aeu3yuro76r0k','2020-06-06 06:55:09','Mozilla/5.0 (Linux; U; Android 9; en-us; Redmi Note 8 Build/PKQ1.190616.001) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/71.0.3578.141 Mobile Safari/537.36 XiaoMi/MiuiBrowser/12.2.6-g','','',''),('v3t82ff3o2twlntca5k72fjf2dz9xre57a2ymfqgwxo02k0i4s5ydoi9aewqncdbe5o5j','2020-06-18 10:10:19','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('w4whzft4e236oac9slq8osikjve3i11bfdm29z0hpruclmumydi9xt7nt2vsryew94edg','2020-06-18 10:09:46','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('wfuissfjeqtzxrgy3p5cze6zs1zgole1rf6miqz3q3xbt4y3yy9mgujvpev3e5gizzru9','2020-06-05 03:07:21','','','',''),('wi4o4qkvyg9ni6rnn7cwdnmn5sqdmzfgxwuods73uwu5zf4bdyzjutmxzk6x6g7a26frt','2020-06-15 13:46:23','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/81.0.4044.122 Chrome/81.0.4044.122 Safari/537.36','','',''),('witydoxfrn5jttsfnhyvom3ae58jq4ql4ohrr3dluquvpw7qhq4qqp9aq7jw7s34egprd','2020-06-18 06:23:32','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36','','',''),('wklqd0cgeac7ul7dw1gtyfqf8t0262ri173sxwwh5rkfjacx36550ak5ceg1q0h6tgkw6','2020-06-05 03:07:21','masscan/1.0 (https://github.com/robertdavidgraham/masscan)','','',''),('wv543wp2eleovruz8lxtf7o6h8a1hjaiwcrzesya2qp8g2aq56augyeisitjlq3ij2okn','2020-06-06 01:47:43','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/83.0.4103.61 Chrome/83.0.4103.61 Safari/537.36','Coba','086969696969','Jl Cobain aja no 69'),('xt5vnyfd3o65r9r08qi2h9e23t7imvu7r19njd00d9vyx85m6g667lwc2bgwv1jtf90o5','2020-06-05 03:07:21','Mozilla/5.0 zgrab/0.x','','',''),('y8n63y7r5xvi4tawac9to6jrktvnvwjkfiy3f5buv9cd12uzy2ec2xuacj500qncz8bky','2020-06-18 08:36:49','Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)','','',''),('yskefgwclu2liqr50pkzemhllluqks875qlccvmh11fsm93ffn8pcsk9741vgnphjvm8j','2020-06-18 00:00:14','Mozilla/5.0 zgrab/0.x','','',''),('yv0m11vh8h89w2dy2rlou0b5m6y13wlmk304igvnwzza0zja22jahwai3samr8arujov3','2020-06-05 03:07:21','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','','',''),('yz5dx2zut67hag2cvmlug2mt6en0a2hajm6tx7zhptwfo5kx01e1apexs00lc8trw036h','2020-06-17 23:57:54','Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36','','',''),('yztyjihb7sshtkg1stci1hfihdqe62vmuw3ksez07gkl1prhzeyb9juuxxfkw60mcbemu','2020-06-18 10:13:58','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','',''),('z47fva9goz53bmifsh3hptvd03d81y1uwwln0z88kkbf8aaijck8n667k1jvzeyao9fvj','2020-06-18 16:07:33','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0','','',''),('za0pxbtdpdky8hrsxqmb61nic994bnaxtdeahfggzpij0l5spwi2fba08v2mfbwpzvput','2020-06-18 10:09:45','Mozilla/5.0 (compatible; Google-Site-Verification/1.0)','','','');
+/*!40000 ALTER TABLE `cookie` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `kategori`
 --
 
+DROP TABLE IF EXISTS `kategori`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kategori` (
-  `id` int(11) NOT NULL,
-  `nama` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` text NOT NULL,
+  `deskripsi` text DEFAULT '',
+  `gambar` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `kategori`
 --
 
-INSERT INTO `kategori` (`id`, `nama`) VALUES
-(1, 'Catering Senin'),
-(2, 'Catering Selasa'),
-(3, 'Catering Rabu'),
-(4, 'Catering Kamis'),
-(5, 'Catering Jumat'),
-(6, 'Catering Sabtu'),
-(7, 'Resto Iga Bakar'),
-(8, 'Snack Cake Dessert');
-
--- --------------------------------------------------------
+LOCK TABLES `kategori` WRITE;
+/*!40000 ALTER TABLE `kategori` DISABLE KEYS */;
+INSERT INTO `kategori` VALUES (1,'Catering Senin','','gepuk.jpeg'),(2,'Catering Selasa','','pepes.png'),(3,'Catering Rabu','','serundeng.png'),(4,'Catering Kamis','','sambal-goreng-kentang.jpeg'),(5,'Catering Jumat','','penyut.png'),(6,'Catering Sabtu','','sabtu.png'),(7,'Catering Setiap Hari','Menu Yang Tersedia Setiap Hari . Dapat Dipesan Setiap Hari','asin-balado-kriuk.jpeg'),(8,'Snack Cake Dessert','','scd.png'),(9,'Resto Iga Bakar','Menu Dari Restoran Iga Bakar *5','Screenshot from 2020-06-16 17-15-17.png'),(10,'Paket Wedding','Ketentuan : Minimal Pemesanan 1000 Porsi . Jika Dibawah 1000 Porsi maka akan dikenakan cas sebesar 5jt','Screenshot from 2020-06-16 17-18-11.png'),(11,'Aneka Tumpeng','Bisa Request Toping di Info/Keterangan<br> Daftar Toping : Ayam Bakar, Telur Balado , Perkedel Kentang , Orek Tempe , Sambal Goreng Kentang , Sambal Dadak , Lalapan , Kerupuk','Screenshot from 2020-06-16 17-20-07.png'),(12,'Paket Bento','Sebutkan Nasi , Lauk Utama , Sayur , Dessert<br>\nContoh: Nasi , Ayam Kecap , Sup Jagung , Semangka\n<br>\nKetentuan : Minimal Order 25 Porsi , Pemesanan Minimal 1 Hari Sebelumnya','Screenshot from 2020-06-16 17-20-26.png'),(13,'Paket Nasi Box','Ketentuan : Minimal Pemesanan 25 Box , Pemesanan Minimal 1 Hari Sebelumnya','Screenshot from 2020-06-16 17-18-21.png'),(14,'Paket Liwet Komplit','Nasi Liwet 1 Panci<br>Tampah Makanan : Ayam/Gepuk ,  Asin Balado , Tempe Bacem ,  Sambal Goreng Kentang ,  Perkedel Jagung ,  Tumisan ,  Sambal Dadak /  Sambal Terasi ,  Lalap Mentah/Matang ,  Dessert (Pisang/Buah/Pudding)','Screenshot from 2020-06-16 17-20-17.png'),(15,'Paket Snack Box','Sebutkan Pilihan di Info/Keterangan <br>Ketentuan : Minimal Pemesanan 25 Dus','Screenshot from 2020-06-16 17-20-50.png'),(16,'Paket Coffee Break','Ketentuan : Minimal Pemesanan 125 Porsi','Screenshot from 2020-06-16 17-20-32.png'),(18,'Paket Kue Tampah','Kue Bisa Pilih Sendiri . Sebutkan di Info/Keterangan<br>\r\nKetentuan : Pemesanan Minimal 1 Hari Sebelumnya','Screenshot from 2020-06-16 17-20-39.png'),(19,'Paket Phoenix','Bur ubur ubur ting','agus.png');
+/*!40000 ALTER TABLE `kategori` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `menu`
 --
 
+DROP TABLE IF EXISTS `menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menu` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `kategori_id` int(11) DEFAULT NULL,
   `waktu` datetime NOT NULL,
   `nama` text NOT NULL,
   `gambar` text NOT NULL,
   `harga` int(11) NOT NULL,
-  `open` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `open` int(11) NOT NULL,
+  `minorder` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`),
+  KEY `kategori_id` (`kategori_id`),
+  CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=222 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `menu`
 --
 
-INSERT INTO `menu` (`id`, `kategori_id`, `waktu`, `nama`, `gambar`, `harga`, `open`) VALUES
-(5, 1, '2020-06-02 07:17:02', 'Gepuk Bandung', 'gepuk.jpeg', 18000, 1),
-(6, 1, '2020-06-02 07:17:02', 'Pepes Tahu (6pcs)', 'pepes.jpeg', 15000, 1),
-(7, 1, '2020-06-02 07:17:02', 'Semur Jengkol', 'jengkol.jpeg', 20000, 1),
-(8, 2, '2020-06-02 07:17:02', 'Ayam Bakar (4pcs)', 'ayam.jpeg', 55000, 1),
-(10, 3, '2020-06-06 00:30:19', 'Ayam Serundeng (4pcs)', 'ysueflqpij022327kyzx0px5drz95gmmr3xif0l5u8lw9rkzqpb9d22uqsah3x9y4kyiqzpc2p702hfohmzew891tnoeevwj2mf46tujtjk92x8iajxvubi7cdd6fm7h.png', 55000, 1);
-
--- --------------------------------------------------------
+LOCK TABLES `menu` WRITE;
+/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES (96,8,'2020-06-15 17:16:34','Cheese Cake','wcie76pvu3n70qazsdmtkr49mymemuxbqje8s2ru338z63x8b6dy3kp4k7e8jl50s5gyvipwdek1ksti0dpav4f5v1gdoofg9yem9qbvnji71ayegp1s24nbf27ixmki.jpeg',65000,1,1),(97,8,'2020-06-15 17:17:11','Kurma Sukari Cheese Almond (500gr)','quewcwesijs41dmcfx0zacfmigpnr9zw62h5k41snfa2sub0o29cmj15uoqplcstwj5extkhqt7jey9s6r3sq0wdhpe12ch3wlp0n046zzaj08t5fkdyzo3eylk7b1iu.jpeg',195000,1,1),(98,8,'2020-06-15 17:17:45','Salad Buah (300ml)','paagvpv3f7zlloilror4v3aw3e8uu69b1azh67s79s2z9pg4eet1jxrj4e8v4hjlcp7j69lqgpb3gvvqt4fgacbn8lymtcpdpc9w9lfoz4prpz6q98lv9o0z1tnuodrs.jpeg',20000,1,1),(99,8,'2020-06-15 17:18:05','Bugis Ketan Hitam (8pcs)','khpunhjrz22yfn4hha2odh5cykq6blrl58kwasu7tatp19o326bmq34lfudzoxi4ptyt3go0oeq7h90qr4308bnek9z754r1y2box600kwnfbsnivle83gyrl51bhm46.jpeg',20000,1,1),(100,8,'2020-06-15 17:18:30','Bolu Pisang (22cm)','wcl0fapyep4l4rt2ykxb0wqd0x0c5eze8ur30ru7vz6aiiiofyr5vgf7mjvz7v3xnazq3sykiirppsy7lcpyirb59t9llifnj6p383oh5o3irondk99olq7go1w5sws1.jpeg',75000,1,1),(101,8,'2020-06-15 17:20:14','Bolu Ketan (22cm)','8jxq419rytnpkjeqi5iwbmes9ue3a1eifyvxkj6n5bbq0y20ub7vyq5qntat60vy0z16yn085bvqsdlgrbsbibnqdvfajou03bae5eihj3l9osudso6pu2x8dlmw8cuh.jpeg',75000,1,1),(102,8,'2020-06-15 17:20:40','Brownies Pasagi (20cm)','0f8bkw0rup2v2atqyxw8cf85g921246jni17x28vjzwbo4a0che6fo5adlnazzn3celc37mycljg3ioombgt8rhx7s2docdjcrb7n59sb71vok2jb5ltj82uenekfm0y.jpeg',105000,1,1),(103,8,'2020-06-15 17:21:17','Brownies Pisang Keju (10x30cm)','0jr9u3cxdy4u2wog5flaryjb5x9f2p7cqig1fex5e90ycc0f4cxx6sxirw15arphtoc8f7wz97i6uriyocsbxwoq40i5p691470tpqmd5n4rvgpq67g1xuz87rksa4zm.jpeg',45000,1,1),(104,8,'2020-06-15 17:22:00','Brownies Keju Almond','uvijs228bk99q31rccgg74u337vfncjr2z3fq92q5o11frsku0ubmwb5f92ptcs33zko159b2e9donodwiic7honmibhapcwf0hkwiobh7q8m5otp9ujvkfifovxb8gi.jpeg',45000,1,1),(105,8,'2020-06-15 17:24:17','Pempek Palembang (8pcs)','56fttwvjwrbelbvus5huzgo6pj6xm9lukwu59cu6qraoyx3d99k34h6slrpoi96gdjz9g3tutzps649jjbznqym7kww82g7al13xi3xvmdtksp8okfvxbujnnw8jbjl8.jpeg',30000,1,1),(106,8,'2020-06-15 17:24:49','Kerupuk Banjur (10pcs)','rlijj5lrfhd1wxyaoaeyd28qiqum5go40q2p6wzv6saq181zvpgme4fmwj5a361cq4sjzp8k7mrvv13sm6iseo7q40ei623ur5o3nkgwoyi079pzjwkyuffxphurzjxn.jpeg',20000,1,1),(107,8,'2020-06-15 17:26:35','Combro Ngepross (10pcs)','gqpg87jn1cy4rbvhb549jy7r8rrtjdd4ydtwu9nbjxwlzp21zenbukhg9k97p2idme5jpc9kn42gduj1jlzihat7d9p1v3f21o2vy9nhluidwvmacuwkypd8lxxipw50.jpeg',20000,1,25),(108,9,'2020-06-17 09:20:57','Iga Penyet','sb86wpcj546y5vrnbwbhrxnqqdj7tqhpkpr490iarmax3cofrjbvq2zo88l0ys4tq3kdlwf8y3wnoboyb6e92yta32nevbsvtnmomyf5ddeb9nz4vy8tuezok0lxu7sh.png',50000,1,1),(109,9,'2020-06-17 09:21:23','Steak Iga','z2z9ljki17peafsowi8j6hchb5vv9f403o2vo3zu5000njnaro5pav48oavsumnw14l7gw7v9skth7n6dy3t6j957v8aqy5qkzjt54vb996hz78tz26mpjyqloik8bqm.png',50000,1,1),(110,9,'2020-06-17 09:21:40','Iga Bakar Cobek *5','a5rp5smga3ebrc8tp9fj8zpv6blrrcj30sx5ytaw2xu4rrgh4slorxbklzjwuf8yoanxhh1bm6v0djyb5q8no4hsx3exocj7nx3ilahhd1zxinb524t7gdgahv367bzg.png',50000,1,1),(111,9,'2020-06-17 09:22:12','Iga Bakar KQ5','k9cifcn0fm5suk1bbiclqvvtgiswehr8qwt8vlayx3hpwxihhjfoab8w3jr7k4zijywy94a1h93zu70by86b7f9fmzoxbhq7gdau16m8scf3fzlxi4qkj8mdtpn4bd2s.png',35000,1,1),(112,9,'2020-06-17 09:26:18','Sop Iga *5','laems17yv5wls5jpgr14uofm22jqhyydqcx86uctvon24d3xcfwg8yhrnenpotwe942srkhzqz6nuw7x5eneuv3spujddagseb36zk2svxsev87c9pn104n0cbi7wkkj.png',50000,1,1),(113,9,'2020-06-17 09:26:42','Sop Iga 25K','ey3kmbutfy4uccxmd8yfiuwx2d9v7ywum8j93cmh430kapnqdyfp42zpv9xkxk0wpieq3s539cjy6reztro0al3m875to0kyogmc3tee8bsec9b4s8jxfyxds0u8o1e8.png',25000,1,1),(114,9,'2020-06-17 09:27:10','Sop Iga KQ5','yfwgy7jl5kp8fso00w9q9amskjmaiy2y2gs8a3ui4ox2i0oranj5gjm5uc8dvjze7szy9h9jco2x96rz78lokzdkeiv2p7irinr2xf55i5bn6fhnulcdojcqfky697u1.png',20000,1,1),(115,9,'2020-06-17 09:27:31','Sapo Tahu','l2jvsvaurw70czo9ny1dzn8txpuxbxpyepq489s3x6owb5ddm2r306vxqna18fs5uczrraopu35ewc6k10n6g53ofqrjwl7lnnpzrpibmmnrwa068oqcq3ki0rdhg66h.png',30000,1,1),(116,9,'2020-06-17 09:27:53','Capcay Kuah','f532fxdqbzpzxlr8tgixmro7yep5vh4mewos78bjijv180d1sf8bg27h8cqzsptamziuc232hsbfq6zyyiid1hsto1c389k1soo3obau11k54wy0iul8vqwv9e3tyu3l.png',25000,1,1),(117,9,'2020-06-17 09:28:14','Capcay Goreng','kt9i4k9ujqt45rz7ekn595hm4v8ub79oq43pdigulvpjhlndcvtim0re66jn3oqiwj7a4oo3e2yg3h0i7dbzalqhguzh8k2c2d0y5onym43lxzsl6ah7jjcjis0eap67.png',25000,1,1),(118,9,'2020-06-17 09:28:31','Cah Kangkung','ai325cegrgcr4rigxzz6frw244o6l37147iic12n2bkv97mxgb6trtoi3j9cp5nvbot01dwq8mvmrcgzo3hbq0a3e4l7thte2y37ja4pj0gvyogpgiuepfwt8wi88f1y.png',20000,1,1),(119,9,'2020-06-17 09:29:53','Nasi Goreng Seafood','pigo1gvzpfotr04jm488eeluvbemch3ct3vfm5f03fs1ga9os8z3myu54qpgxjo8ae98wrx1h901ne4msvxepo0mboi6m5pge3c2s7lbzgpzebzkqgleu99frl633j3c.png',27000,1,1),(120,9,'2020-06-17 09:30:15','Nasi Goreng Iga','ok5u9psayxlxka1hsfflkqqexdqwwt7gcl3brrjolgyhrtn7hmb09n8qc10a01tz2m4cxvbujdgbh5mkgyj7dunvrrqfr0iwvhgxludv89ku19q3z063qwbxq0kopr1a.png',25000,1,1),(121,9,'2020-06-17 09:30:35','Nasi Goreng Ayam','b6oguc2r24yj7d2q8f17l6yc5bbe987m1t958xshxbakkstscz9v7hm2e9ic897teejqqqphpzid91endqwiz2eudbbdk0avv2nygx65ogpc2w1qhmp4f6g8x4yvw24c.png',25000,1,1),(122,9,'2020-06-17 09:33:16','Jus Alpukat','Jus Alpukat.jpg',19000,1,1),(123,9,'2020-06-17 09:33:49','Jus Strawberry','w5ew31vs0cpph84ru05ut6sfaoz3vc43fqi7fuvijox6zyyv7doy20j4xy87ugy3jvtnz6n8resiqiy39v2xj0zoqkbt6cwnenhmow1d3shwedaxqpl0dhbuqqoczzvp.png',19000,1,1),(124,9,'2020-06-17 09:34:22','Strawberry Mojito','Strawberry Mojito.jpg',25000,1,1),(125,9,'2020-06-17 09:34:58','Lychee Mojito','Lychee Mojito.jpg',25000,1,1),(126,9,'2020-06-17 09:35:53','Lemonade','60mutt2231s5js10onic919npkqq2rccw8lm6nh54tga3pv5w1r4lv6nu90uuhbgfv8f9i3yb5mywl7uncs2pe4sszhzhphk2ia7osdk7tzdejnorf7hnuow0grt6r6y.png',25000,1,1),(127,9,'2020-06-17 09:36:39','Oreo Milkshake','Oreo Milshake.jpg',23000,1,1),(128,1,'2020-06-17 09:42:10','Ikan Mas Bumbu Kuning (2 Ekor)','8093ri0a50lnkbulbrjqnbgypxloyuru7mrvimzxotddgc8b1l4wpjh25vint501qrmce77qa631rrsbdb0nc4erumhciaoyngkbzwpv4k1ibf3kh11ljsjy90x2t13h.jpeg',25000,1,1),(129,1,'2020-06-17 09:43:58','Tulang Jambal Seuhah','gyhufcmfbzt9252l4m2pmj6gl2mkbapgacworke3mfpk2zwxgq0fqugxgolpshgz57swlynpelm4valn8jsp54j3w9v5axf4o0hdmghrbw7c1u21226w2tvpd6aqx8k3.jpeg',25000,1,1),(130,1,'2020-06-17 09:44:21','Gepuk Bandung','0f2zmmmlvkojil3eogv8o7bqyns9ycz0pimyps4fjcwmkdgpzpml2y2qbtqltte04vsrz8mynufle3srzk9m4exxr3w8zo12r0s8wajefzmbu1ihdxn1p4uqtr3m8bb3.jpeg',18000,1,1),(131,1,'2020-06-17 09:45:03','Telur Balado (6 Butir)','1py94ro4zuh1zoc1duf1kf5wk4aeo1fsu8n782v46ckrmexx6cp823aan8e8qd5zpsrfynarsfb6huu3n7n1sftn59ert3rnq7e2xcer2r9lpj32p4ocjnxojoflh1va.jpeg',25000,1,1),(132,1,'2020-06-17 09:45:36','Oseng Teri Daun Pepaya','yf9flvmhiocnhu46ynvol147s9n1je92rrcpueodrytmx1mn8pt76mpjwj0hlmj2ytuowwak2nme4dp09e333ugsa0088vp3vuca5vy5qx1mw8ffgbwc9ynh0lyot0jb.jpeg',15000,1,1),(133,1,'2020-06-17 09:46:09','Sayur Asem Jakarta','zsvhqe82a0o7adc9zmhunxh9bd3hbxaags3qlv12ntwnt6r9xtizu8ajqm0nqxn7ecgxi9tk2nzdvgduusonjum4ou6wn2lcr8bwhs1vfo7kpiuvktqj9gqrjo0zvo4e.jpeg',15000,1,1),(134,1,'2020-06-17 09:46:54','Semur Jengkol','c31p0ttbwgtrpmmqvq1nlontl41ruvhbrfqz3a4i7vzcflmmjj5emd3qdusif6am5i89fsqu0uouwed9qwjkt4heo3xu4z1clfrkvqzjun8yh8v1dqegrllf2gklwz1f.jpeg',20000,1,1),(135,1,'2020-06-17 09:48:32','Pepes Peda (1 ekor)','6jlv61o9h8xtg4ncbyrg78su9t8ysnu4a35e3iwn81rnj7edpn9ohmiylv1dupkm10y8uqwqb41knzl812a01pjckw4ugva64jgqqgjwfqg42whs07voxmlwu222gieg.jpeg',15000,1,1),(136,2,'2020-06-17 09:54:28','Tempe Mendoan (5ptg)','tempe-mendoan.jpeg',15000,1,1),(137,2,'2020-06-17 09:54:57','Gulai Daun Singkong','7wq8njd06bxq8zpxq26izngvfom8yolhccztm117czwjtkp3igkia8ihpxcqkcmkm90krswdtcucwi1fr79qtji7cu9y6y0j30njfmjygrsk6jqzv9j170oaurepizhr.jpeg',15000,1,1),(138,2,'2020-06-17 09:56:16','Pepes Ayam','s0vnj6cxjauu88og4jmc1c29i9tp25uqgmwng4whb1a3q38gsou3i3bouwwbd5unyu1f10kez9z3clw3icvl6ny3l0rf3s8uywrgbvug2bnhk2819q2jrwsuagkjkb20.png',15000,1,1),(139,3,'2020-06-17 09:58:52','Pepes Telur Asin (4ptg)','brkhxkjvm25hd5v49sdaty5d3sp5o7majbpwe05odvnowx7acqwubj804yszkytu5v0wwv6evo735gka5vtqciji44kovfz3o5zi9cj40y0jtalv9n0eru922drggrjy.png',50000,1,1),(140,3,'2020-06-17 09:59:23','Gulai Iga Kacang Merah (2ptg)','w2g3znig6di0udntyv1cpo7l6jx6jaoawmkvtpg4kw17yitt0ayts76fhublope1w9gmk7on45k3z866ykxv56q7cmx2ehp8e1v01rfx5pjo3ndnwonefxoj7zn76rwe.jpeg',25000,1,1),(141,3,'2020-06-17 10:00:42','Ayam Serundeng Sambal Lalap (5ptg)','ayam-serundeng.jpeg',55000,1,1),(142,3,'2020-06-17 10:01:20','Gulai Nangka','z60sqnzi5sdiavqq00yu6i4bsqmpez3htvcq3n5tnfg72lx2hx3ddanbiqckrc119nx5kcaba48vh79rl7689sdahe4yrwntsfp9buk59qmrnhezvb5dofynffciam4e.jpeg',15000,1,1),(143,3,'2020-06-17 10:02:07','Bacem Tempe (5ptg)','pkonw8ywmsv98jw0h0cyt1ewhiawuv3sq3n8ka7xr4qimpu74kj6ixlyiamqw9dqoo2l7fk33zkt1sbv32hnnaq8c0xzw1beiuhtfqe009imsqdlywgb35ud6c2pg5s9.jpeg',15000,1,1),(144,4,'2020-06-17 10:02:50','Ayam Suwir','qvbluvl31y2fbnkikd57dbdxwz4tin04uucdu20jcidr62jdtje4xm1255h3g78fi93oa4tf8l1wlnv6ctepeq45zzwjtqks19ma9ptnh4v67cp0gvrg1rcs8dli93k5.jpeg',25000,1,1),(145,4,'2020-06-17 10:03:09','Soto Bandung','6vzhiytmgwehlv1sg1y3wesfvzan7fy913el2f6nth4s73ct0zk38iqevj34j1tq82atvnzkncsio1tj3lm6u0n3ip2zdh83dm9ogrvpnrfqczqgiexp4cr8ew83ge6g.jpeg',25000,1,1),(146,4,'2020-06-17 10:03:41','Opor Telur Tahu','eo4qghr70rct19avxl1hpxkisuz108pa3p8azb7z77xp5f6b3vauxcltocshpdk0ykpqlgdo2apljwejpyldwg05p6yytpmcl9v9d1ky0fmbbivd5bbqoaccfjupax9h.jpeg',25000,1,1),(147,4,'2020-06-17 10:06:33','Sambal Goreng Kentang','k3f8r4n6txyga6bu2dkx7x99g1ykxxntwbz5eidjfvtt54bna36e0hkhjm0ii3iiztgx2j0hjeyc4jxdjtr5gspkbd8jm9qs8mx14aqkqtmzusxt6mc2qwwgov80232z.jpeg',15000,1,1),(148,5,'2020-06-17 10:07:31','Rendang Sapi (4ptg)','p3jdn2r95v0u0ag499kvf7wsqmmukzr5ehn1s9lq9ua8rqrl3xx1rvn29fscmrwc6cc1r4enwo81zhyytygiyflg9rxirgnq4qzhua3pli072xpf90carc8kifwhif4d.jpeg',50000,1,1),(149,5,'2020-06-17 10:08:31','Telor Ceplok Bumbu Merah (4pcs)','telor-ceplok.jpeg',25000,1,1),(150,5,'2020-06-17 10:09:28','Ayam Penyet Sambal Lalap (4ptg)','xk0i8t3guvuv568sysvcm6stxoknrrfduzxgu6uc2yccicwlmjq9ohnbeli95djebt7nn7ehrr15oyrjjshpk9eitw10tzkfjbd1lr2wthkqonthkmp77vurl5vhboex.jpeg',55000,1,1),(151,5,'2020-06-17 10:10:21','Karedok','karedok.jpeg',15000,1,1),(152,6,'2020-06-17 10:13:04','Cumi Saus Mentega','cumi-saus-mentega.jpeg',50000,1,1),(153,6,'2020-06-17 10:15:44','Terong Balado','hh89mhqmm6gyka1qyzribu204qbvmhg59ypv9nenzjdqodvbvqs7fyuqggbwieoncfpi85nycl92zkj4jlxkf29oxrjou0w0l4d8mf58trzpzzq7tcu0luboh33iyst1.jpeg',15000,1,1),(154,6,'2020-06-17 10:16:13','Sayur Bayam Jagung ','ipfmelfxv0ci0wvz3v8azfjt0c1ggrjeln0kpetk4v7t8a62gtkakwwhj8djmfqu30r81xhij6bxyxztiqqiks0ksexupkmv49zrw73zlziryf3k77keckoly7rzaknb.jpeg',15000,1,1),(155,6,'2020-06-17 10:16:43','Perkedel Kentang (5pcs)','c3swfz6o14pk3ky8912b1ahsngqmuv8nz94yns8npcv6t7cdr1uv2j005cquvqmg0hi4junph3dzyfhrd2irg7g8xp1ulks7lz8yoas9h5dr85tewnqxcpergdouzlww.jpeg',15000,1,1),(156,7,'2020-06-17 10:18:03','Asin Balado Kriuk','lk3vnpcjxu0dcj6qqlwndv2evtbyky7ke2itnv0m4acs4l3so7ojy6ck6gqgeo9x3821yq93n73t9unv0yqdmff2k2j5ubl9764rxh1teygis7twozwhhnlhf5nar97x.jpeg',20000,1,1),(157,12,'2020-06-17 10:24:26','Catering Anak','efvr0qzqwymiiyb0uesdkn6px0p32ru9tsyuyn1y6n45vi0jgs3nsq5onb0brr0ai9bim71rpm2pc112o4ptyymn92npg4koqtrtjd25vq0tcp6plu9syo6eoblck4vq.png',17500,1,25),(158,18,'2020-06-17 10:29:49','Paket Mini (~40pcs)','2aj696ac5ycr8vhfpk5eb0ts2yf2yfue5bofwuvrdi8vkwwqd73y8kuonpk9ldn4d3hb842q9k56x0a7g6wn8le1zr6j63kdgg15zw5t5609mkyua5wwf97qv8ff6ftw.png',79900,1,1),(159,18,'2020-06-17 10:30:41','Paket Sedang (~60pcs)','xpopsgvbm7bis2k1qw2sb7tr13j12c1zfh5b985sya7wzi3p8yiucyrw5wp2tr4fda2xmf25v8dqy4v97k7vm30qjizv4g8m0ztc92qk9xi62l3m7yyy02hzvuugyis7.png',124900,1,1),(160,18,'2020-06-17 10:31:09','Paket Besar (~80pcs)','lzdzubpt1gv94n3l4wnoe9r53io6zrbwmnun29nb2ub2aknv8yhzj3xdyjqjjlkp51ftxp5pgqpg8kymmfjg53j876mb7uyka22imofrp1jyfw4taaveytmi3a5krhz2.png',149000,1,1),(161,15,'2020-06-17 10:33:06','SNACK 1','paket1.jpeg',9900,1,25),(162,15,'2020-06-17 10:34:25','SNACK 2','paket2.jpeg',11900,1,25),(163,15,'2020-06-17 10:34:44','SNACK 3','paket3.jpeg',14900,1,25),(164,16,'2020-06-17 10:37:31','Coffee , Tea , 3 Macam Snack','1qig5hoibn2hmsqgfbbarzvxn9b3hhtufla0r3cvpcqrdarlo72zg7t9v5osnqaba2a0av3bpd9dt4m4mk1ekcqt11n1pc1pwzrqswc6nnhc2ney08fc6hpxyiritbm9.png',18900,1,125),(165,16,'2020-06-17 10:43:08','Coffee , Tea , 4 Macam Snack','rt3zkcip4st6zkqu1r5omzlu9dbgsw31sewn0dpyqp7oa3ngd37071du6fagez17b3iw6puqozze5j9hyaf8ze91xwzlmt3c0qthb4lqw0y4sdc7f3nw8c36s28e1unm.png',21900,1,125),(166,16,'2020-06-17 10:44:05','Coffee , Tea , Milk , 3 Macam Snack','yfbisook4id3xkjw9zf9hcew7lxfv1d44ezdnxalyyshibkl42gr4oqmd1uwtjfpy74kmqiwo1bc2wp1ycj7op0a5gp29osotrzwyyua8exhxjpgifeg40ehkdlipvn7.png',22900,1,125),(167,16,'2020-06-17 11:02:17','Bandrek Bajigur Rebusan','0vtj1v5s1m9cldv2qogr7y8pfpxaki8kfggypjewyrs9jq2nyr2sl5ruj72qgfnrk313h70co0aakf4m5nkx3ajorg866l37save5hhcteqzempx9yk9aec7l3t1qjuw.png',18900,1,125),(168,16,'2020-06-17 11:03:18','Coffee Tea Awug Komplit','vs2kqo7gxtc7yzfhyzwc2nojb2tq6n2waloxc2fo1wdtmmrely9wsxgmj0fubdopyj0fxfmenj7652ccmoiqqi069lb9v38znrkfkggga92y6q5ma79uybzrjkj9io3b.png',17900,1,125),(169,19,'2020-06-17 11:10:57','10 Mbps','hkp38quwsqeg6v8hxplo65o8lfawmhqdto5zbnuatsxy1nn2fwe1ddh0jhjfxvv2esfccce8lvcpqt245lfnzn8hsh1wamothewxqmk0qbksauefmilxlbt0qi58m850.png',280000,1,1),(170,1,'2020-06-17 16:38:05','Ayam Bakar Sambal Lalap (4ptg)','49kqbogwcork98rxk00qj4vt6yropaazahpkdjux973d1p2j76tgr02l4186dc6ffpenqp3ri5mo7nkmqkpe0oczo4zns4hf5fvpfsk619h01h53srx09v7q2tlrswro.jpeg',55000,1,1),(171,1,'2020-06-17 16:39:07','Sayur Lodeh','btyszyjltggbb72n8wn1jnx3n8jgpzz8nioe1l4uvsoa27sr8k22quclczvovqrw3u8v1yua4kdfhhros7xfysl4dj9mbsxzumz3xwzwzb40chpr7nz92d1s8x8oxwnv.jpeg',15000,1,1),(172,1,'2020-06-17 16:39:29','Pepes Tahu (5pcs)','vvqws4x4y5p13wmwyv75ak3p1bxdb42tmd3rxbo2uyk8o5l9x9jq148lk1gc6w3b21lzr3uuzpqdjqb1vg39bi1dsg7t79lopmnvzms8oc77sl5pzmab8ypwo6hwysp7.jpeg',15000,1,1),(173,2,'2020-06-17 16:40:11','Semur Daging Sapi (4ptg)','jd8b8uvu0jdas9avh42nv1m6cbii6vcau0vwxvl80k4v0set39z9cxxtvh37bxjurwqlpo77gf644uff4g9cuf2ubv0nchu951y9en5d44w2sq1gre320rxjkfixguju.jpeg',50000,1,1),(174,2,'2020-06-17 16:40:43','Nila Goreng Sambal Lalap','0ceokjj7uszz0dhju5rxja6vmeuv2pzptog7tufirzkfjyy4c0bouhp50d8i65ljjjcijl7m2i90yqor7al5a50tezzhliets74vmlyri7ss00r3l5ctnxzpo3kaehyn.jpeg',15000,1,1),(175,2,'2020-06-17 16:41:16','Telur Dadar Padang (4ptg)','8tq3hpa618borei61li9wpx3457mtq2sjssk6gnwg4pl2m7upsmu3pu9slrwaels40jxut1cthbekldc66sbavg1834sruqa731wfonykvhaizae53ooy7opmosrgsnu.jpeg',20000,1,1),(176,2,'2020-06-17 16:43:54','Kakap Asam Manis (250gr)','wl6yg6cjbv2biqenmauzydjcp5giuvv4gzxq6z2lgf0pg1lze0lfp44l0l5thfm49eyjg28bl64lyszvfgjjihcnpnf25ev4blwl05sycf54zovueqc1huw3zs025ljx.jpeg',50000,1,1),(177,2,'2020-06-17 16:44:20','Sate Ayam Kondangan (20tsk)','ot11nqnin1yzhb9565qzlwejm2wce0w0i6in6mw63izc83ommf52g95jfk09phi06z0w6s11er9ame5p6s19hy1lx7s8xvs665nvrkwbwfbcgc279j2qwygxs392zekg.jpeg',50000,1,1),(178,2,'2020-06-17 16:45:09','Soto Ayam','tfp5ro9c9ihybsu82r513o179uah7mjxlvedupzir44qf73s67iijf6v68hjzok34wacv4viqxxkansrps57zb72laofvzhh8s66sg63mydaq9buoed2miz46x36cuu4.jpeg',20000,1,1),(179,2,'2020-06-17 16:45:25','Ase Buncis','zmv0e7hmhf5a5wka5atcnoq6gasao3l7wlcgca0gise8ksssmvjyn39a7ux0thimo7gbzq259b8m0n2txwcz8gtidn1oy0agmrxicgw8wf240zmjmxcaa9rph0oamhb4.jpeg',15000,1,1),(180,2,'2020-06-17 16:45:57','Sayur Tahu Cabe Gendot','4t2gpdy129nfw8d780gyh33gy7cvbbiwf47nl0lfhyb6mfuceqh2l8ubmyukh4m3x2wfsbozae4blng3a1g93h43dbza1c6saxft20d1tlmhz8ycdn7h1epqxpjxss8q.jpeg',15000,1,1),(181,3,'2020-06-17 16:46:29','Bistik Sapi (4ptg)','0jqgxoqxu3oetipvn2hvlbimvoytjqle3rtcm1xkcvob74qq8n4qr2uilq92ebcgpnk6tlq4trozcdjseq3ropstkjqqxhvzautp0sh4btzt8969anc2tnz4449z9neg.jpeg',50000,1,1),(182,3,'2020-06-17 16:46:59','Cumi Saus Bangkok (250gr)','0da0vn01gg3d9bmw9ucwrxw478nopsmk1ojyhq7gd5q29w56m3xzad260vp8do199hpvupfr72uqdejo9pip1kink6amjl8jhvjabqnwscduevv0deocshjsy8jgzpey.jpeg',50000,1,1),(183,11,'2020-06-17 16:52:54','Original (20 Porsi)','efacuer9mvfcqnp67q2gv47poj16dbx0x0cne8c0h7z4wif15hvnpi1m6pn4hnhgufz4am94g83w4aowahj5wybfhiau9j552emimp26b8qt1a2goxx66r85gqeh7iit.png',800000,1,1),(184,11,'2020-06-17 16:53:18','Tutug Tempe/Oncom (20 Porsi)','2m3wnmvry706yv49bkojdynbs4yxt2rz97w1yomx1nl8wuam364kfzeqzj8mu32qit8na7y8cge68qomxpyfvov0occv1v42yl15ylak6in5bui5d07rudg0ijh22roi.png',850000,1,1),(185,11,'2020-06-17 16:53:41','Jingkrak (20 Porsi)','p2bkbbheb7rpoi673v4ihtukfi2744hmpfnoz46ux4udpdxtmhsv7a9s5o7imlhl5mjqnxbikbw95djhpi0gwlfamdw1iej5jh61amo0ero7jn3p93pcwmd85czex8xh.png',900000,1,1),(186,11,'2020-06-17 16:53:58','Rainbow (20 Porsi)','13nqynllkr7k18blwdks45wrz691yqxv8lrs749mxwnnuo2ol2gc8mnqtyi4ug3c4dty2u3hv4l9ksaislr35mfy6rpysljo5dcvqcky50y0tgt0dl89s2s0z2maho55.png',950000,1,1),(187,19,'2020-06-17 17:13:19','20 Mbps','vb2irc512l1nh744eozxw5a3mmvc6dg5z57eo8b7urh1uwztk0kphbr68dn3efrrzwndo78fjhnv3zfombnn10jr1g9tqi4zy37fzx0uhd347rltxiuvprcr2l1kr321.png',345000,1,1),(188,10,'2020-06-17 17:24:28','Standar','gx3p8ad480ljp2qujsftz1h3776fmyw8taf34olao2qw3j4o029ct535tcjmoe7hdooo73u3abgmkunmzp7ln3gz80nmss7nf94cqvmmzj59uv6wqrc90xa6dnnj83u7.png',57000,1,1000),(189,10,'2020-06-17 17:25:00','Medium','5ob821kie39cjpe8cu68h1jg441z2iah9jdkse0ylbzidgzua24p1g474emcuepdzbhgkm7vyxno1suoktsb4uy0y5ry2qbkz6sxrk0g5agby39xwcu8n0t1cs8bwaia.png',65000,1,1000),(190,10,'2020-06-17 17:25:21','Elegant','i0hrt0s8wkxuov0a0bb4ljbql9abpjld4lg83vvif6sisvclncp4lfzqwjprxsrjgaxpsjrjn3ktklbwhai4va2pthyj18k9iovwzzeog5vs56il5842kgrxo5e6iki2.png',78000,1,1000),(191,10,'2020-06-17 17:25:49','Luxury','tfmldvked0x69fczl0k16xgbz7uo33jh22ph9kj14xbhgeqdtg0xbvv4hhkxfosh63vsdb8h1q6xu9yg6r2unwc8t2ahp1rc93vmsulw79t72kd81z1x5fdtlls5sivv.png',92000,1,1000),(192,13,'2020-06-17 17:40:22','WRB 1','xlygmec62jk4me2q20k3tqzqj0skenvftqr2foj54uxqzvw81k792c1rm0wbi13chiha9t91188w21bd0l39nub69f2rr9ifar9g0qeiiiy2yivquzlccqv5y53n7tr2.png',24990,1,25),(193,13,'2020-06-17 17:40:41','WRB 2','4zqien0js9en37l0cs2oqb5qsg1czon1h64q01ek8kpvsks7mcocc3p51n5gctugn0q8dvin8f9i306t4972eqmtz8c4r9bcqnfyfqc9gkcz0n5jxjsphwnmixx6ft4o.png',27900,1,25),(194,13,'2020-06-17 17:41:02','WRB 3','5ilp733317y3dh6gdd7xxy4dsabtrggg6fw5z9pkl8y331yx7ajuuepo8mps3tacdwzo2hc9gxhr7nov1wpygur0qhi7ka6m5s9hcsb6pjse96hdyouxxp6kk91usugm.png',29900,1,25),(195,13,'2020-06-17 17:41:16','WRB 4','v7j8sm83jbugzve0lkanvtfqfsbkso95iowonhbw44pk4xk79ec2d6yiykruktbe6o6jhau817b4v7eukr6k5jfgvg5j6ejvor5e3tli5n2pon7mcc9uatvezmazmomt.png',33900,1,25),(196,14,'2020-06-17 17:46:18','Paket Ngaliwet (20 Porsi)','ih8phzcufserpn1for6xkvsu0hu77s2grbj9fpnef8es3or11psrdns72ajugr21pagymamwumuudzpgwymxl156v84m950h4wl12vva4oezmhs1t47vu6v7gv99yemd.png',800000,1,1),(197,2,'2020-06-17 22:52:49','Tahu Orak Arik Usus','niloasrjjfgalpva0vq7sn60e2sapmgqcbbrngl1t8h7cdswnpu7fuwbgk63ggm9a7ktz5kampqoa8qlp8e6ff9yqibh370jxyas56th2qktj1aud0xyaj2m55dvmhlz.jpeg',20000,1,1),(198,3,'2020-06-17 22:54:02','Jamur Kribo Saus BBQ','qwz26ckpne5m7n9h14dypsb90z4ov3ad09j3zdxw7q4bhxgx2mzfk3jhc69jydw8gfhef4jahjkgw0xgfjc2uxqom4fw1as0owqphsn9elf63ktu47tt8oau3qjih1yv.jpeg',20000,1,1),(199,4,'2020-06-18 00:54:07','Ayam Sambal Jingkrak (4ptg)','q5s5lfjbc33we88opnfpzpmdlmsymwry3dxhryhhmt5lcikvv25usp4hlm8ltcqt7awd3r8mp4ga3wbj5d04l1lmm52bmta8ic063cbqf67n2svdjjdjka53bcm24l6n.jpg',50000,1,1),(200,4,'2020-06-18 01:05:54','Udang Tempura ','e923mqibl2n852rficyx2yxitzjrzcrqc8z0xt24ldqgx2dq12trgwyri65j3hb2c71xkwfgx8vx5lxu365xhcvh8rjbxgx6vablnuewi5fjclftkko8f4rbip549x0w.jpg',25000,1,1),(201,9,'2020-06-18 01:49:23','Jus Jambu','Jus Jambu.jpg',18000,1,1),(202,9,'2020-06-18 01:50:31','Ice Lychee Tea','Ice Lychee.jpg',20000,1,1),(203,8,'2020-06-18 02:00:44','Kebab (10pcs)','j0anqomj7o5sjqut152436phwa01xnf1yumzl8e5485ydqg3qhnom870vjoqljx81btijmz08e1e4c6ybuptejmuonpojk64qp0w01xb25r3jw5nza9k2gnu4a9nsvb0.jpeg',85000,1,1),(204,8,'2020-06-18 02:01:19','Kurma Sukari (1kg)','wh4q8e74e85vqyyuk3cnlh71cmc6eaukpwqsiza678tvcget0qro8ye7jh7ocfr12zbp77v0lqgha216332xsv0pkrbk5ht333gidgnt8jwux1idtxi395o3dexfp0de.jpeg',120000,1,1),(205,8,'2020-06-18 02:01:53','Cilok Komplit','kieuuymdffdfx3h24qfpvn5uunz0bwkdudofj8xwd5slkcufykd7hh5142pujfuan1959zs43ax27qvt7ptnqzuz4t0p2yxyki6qkoygahjmawz1ikownk2pmwfgdn1i.jpeg',15000,1,1),(206,4,'2020-06-18 02:04:29','Rolade Rica-Rica (6ptg)','1drw7fkpvdh2ttw7olcifa94yc4yhoqxlm5z526z0nwpxnfduxwl7x7vdo3ijy6qypr31w9shbcse6iov2usacgw9w21pugxnpxo88zokbkdk01xuuyvpkd0c2buf1x2.jpeg',25000,1,1),(207,4,'2020-06-18 02:04:52','Orek Tempe','46xtb355lrp11xusg7adnvx2jrwdhgn3eb1r5a3qe5td9vjls7tfyzppy4fruls9wzxhk66gk4vt4wyzpdygulqaexfvykfn17m0lwl0n9bb9oyinlw9viyyfjnm5mgf.jpeg',15000,1,1),(208,4,'2020-06-18 02:05:12','Cah Jamur Baso','r7z2nhj0l239fmhhcgrr67rje2h5tevi92sitqebttpve1o45enxcoi5x3f0dsxdgzr1hwib2qrgr3zxtq19ejbwc3o23vjml2oyctmvmi5a5z3aif1x27rlqrg36m7s.jpeg',15000,1,1),(209,4,'2020-06-18 02:05:31','Tumis Tahu Tauge','8f3hn2hv9jpfl0plo5l1grg7fssx4mll6mvp6y4mgybjoxmbln0e35tybol5c2552x7rsmwhyrvo6l0gmmwfpczg76sso5j4q6qmb1sjibhwe3vq1jw7qk1e94n86l4c.jpeg',15000,1,1),(210,4,'2020-06-18 02:06:18','Buntil Daun Singkong (3pcs)','ov7w9su2yhwo3e7l4h62a8pu4hc28u7np19hepx7apcfcq2oe7g785vls171iuwdhvbmvazqbc3jfyqwa4rv7o0m01m1xo2s3n5k967rb4xfsbwqlocswe8kv4sm7ywq.jpeg',15000,1,1),(211,5,'2020-06-18 02:06:57','Bebek Goreng Sambal Lalap (1ptg)','637jwfhjeviale6m1dde4hzlxdw2xwyej98bqdt3wsl2k64hjrqmaqrqzmfnjn30xhpay8fylqx6qn9ez8hmwq3nzzpz500xgm0kz28d0ixvq7xqyw6y9omlmp6kic14.jpeg',30000,1,1),(212,5,'2020-06-18 02:07:11','URAB','biwe0fnz94rpl4xxdmu5sjoizhmw5ref2alj7gnpntzxzl4mv07eqj829pl225xyzcqczlujdfkl7lkjsugj4am60k8n2xaz7tnhlocjssx26jzjqo4c6l6e96nsnbn2.jpeg',15000,1,1),(213,6,'2020-06-18 02:09:26','Pepes Ikan Mas','3qz60yz9w9vejdw92qi6va4y7xcf0c3ud3zsnusjaeu8xgj3bi7brbmr4mj2aae6zzwcfk335evz7oxhf662f5mtp5n2kamcilb1imi8b1lo0g7sxzgxmcrjm0v3p98i.jpeg',15000,1,1),(214,6,'2020-06-18 02:09:50','Kimlo','wy2tt86sey31964x6tudmyh24rs2iutt2fyl4x7ijm1w2zmq2gyj9fucndw8ybzxse8urwxie7e4dj3387ftikeufuiwnq0lllrpa8op5xwbnjh3ry9wjq1q76dbwso9.jpeg',20000,1,1),(215,6,'2020-06-18 02:10:19','Sambal Goreng FULL ATI','1bwq0xlmtz1rmhxesgl7d8zl4bqjo1ck6zcd025yf7g6ve5liubc882ynxglq9wnm4t61caiqkqfzgk09gwk2cie9h5gnjcmfyovppl559malshy63z9095cd9srtfpd.jpeg',50000,1,1),(216,6,'2020-06-18 02:11:00','Telur Dadar Crispy (4pcs)','oupaou7da4f9v9ncurxzol0kaua8jfsqstju22tstiaxzy2xam2g5c6o3wp80w5sc4scbeq1o5mog8mh7y8tl3apdboxtz5q5v46s96at3l7zpdipva0pq9oxeliolus.jpeg',25000,1,1),(217,6,'2020-06-18 02:11:22','Sapi Lada Hitam','3r206auczjvh80zum49p4a6dnhaviiscihfyzobt49gpp04sagofvwuard7eave5bui1jzpup3s6lwf9yhx9ordwust71b0dalh338eiohauo0skc4da2w85catxdlhc.jpeg',50000,1,1),(218,5,'2020-06-18 02:11:46','Sayur Kacang','1f0btcjd4hedyx9jh1ozoi4e2nqy2fueqtd2lqp9mcs3q9jfm00nvb3rchdq9a8lia0y2dywk2ttcezrvks5fsbl4x9gykcc13qdkzq9sr0q38ww6nk71lur6f4xnmuq.jpeg',15000,1,1),(219,5,'2020-06-18 02:12:25','Kembung Balado (2Ekor)','85r45buimwmi7h5172sx6m599vkjswldk8v776xv2bogy3rsuc3y9bblbw9ppum12tjfr82qu07kv5s9yk3d2j2hztib0eb75wh7py0i3h8h5xxujz1fcg9cvnhkvpuy.jpeg',25000,1,1),(220,6,'2020-06-18 02:13:52','Kikil Tahu Cabe Gendot','cll0tbzahb8q2siqiy1m9w1kwh4d4zkuo38h88ipy7i1mk9hp7tm2rbgdevun3wy6z79q35pc364w3chnxy45qdn1jij9q210izq1qjppu33fdb7ldwthegmie9oqzuc.jpeg',20000,1,1),(221,7,'2020-06-18 02:14:08','Kentang Mustofa','n2mn7j8ga55swkn2vzwljr36x7oeqdbk5fgwe2xf05qe1kkzybttl3ggl9qb1yld61cpgaebpy2dix2bqtsk9ffktj42agrrx1k1c3zlttmqyol8az2k1fr2yu5bfjfw.jpeg',20000,1,1);
+/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `orders`
 --
 
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `waktu` datetime NOT NULL,
   `nama` text NOT NULL,
   `nohp` text NOT NULL,
@@ -181,190 +144,119 @@ CREATE TABLE `orders` (
   `paid` int(11) NOT NULL,
   `totalprice` int(11) NOT NULL,
   `method` int(11) NOT NULL DEFAULT 0,
-  `kue` varchar(69) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `kue` varchar(69) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `kue` (`kue`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`kue`) REFERENCES `cookie` (`cookie`) ON DELETE SET NULL ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `waktu`, `nama`, `nohp`, `alamat`, `info`, `paid`, `totalprice`, `method`, `kue`) VALUES
-(666, '2020-06-05 05:20:16', 'Muhammad Fatah', '086969696969', 'jl waria berbatang', 'aku cewe = false', 1, 55000, 0, '2nh7br925nk5q7d5mnowm3fxs48nj6188sinjj92nrudvpetcf52dhifx2ah8q54addkv'),
-(668, '2020-06-05 06:28:30', 'Ulen', '08143531513513', 'jl optima', 'siang malam makan paku', 0, 93000, 1, 'pos8i4lijr48x1mbuxan2vy3n1i9bv1z15lpjjzsmmx1ei86tkbree4mt7k4xmmpsq6z6'),
-(670, '2020-06-05 09:29:58', 'Optima', '08314134133313', 'jl raja tega', '', 0, 15000, 1, 'pos8i4lijr48x1mbuxan2vy3n1i9bv1z15lpjjzsmmx1ei86tkbree4mt7k4xmmpsq6z6'),
-(671, '2020-06-05 09:31:12', 'ulen tiga kali', '08333333333333', 'jl uli ketan', '', 1, 15000, 0, 'pos8i4lijr48x1mbuxan2vy3n1i9bv1z15lpjjzsmmx1ei86tkbree4mt7k4xmmpsq6z6'),
-(672, '2020-06-06 01:34:30', 'Baon Cikadap', '084535343143', 'jl asede samalo no 69', 'pedesnya rata kanan', 1, 165000, 1, '7cy0d7x7p2xg182f11lti8j0lt1ttq7qvtla3jfiv6husk5kjwjflzia7ia6vwv45i0rt');
-
--- --------------------------------------------------------
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (100,'2020-06-08 15:48:52','Coba','086969696969','Jl Cobain aja no 69','',0,120000,0,'wv543wp2eleovruz8lxtf7o6h8a1hjaiwcrzesya2qp8g2aq56augyeisitjlq3ij2okn'),(101,'2020-06-17 21:34:06','a','0888888768678','0','x',0,18000,0,'57dvhpmsg6xqkltp8i8507ilc42rdpmoywhdih9aesmo2a7zcztezyg381fcyyojrka9u'),(102,'2020-06-17 21:50:46','Nanana','0888888888888','Lalalala','',0,120000,1,'q07j6nqgogufmyqkpga77wptptcfybvrixkuwckcldf6pq8k7zcw6dtspyypcu3gc403m'),(103,'2020-06-17 21:53:22','Nunununu','08080808080808','Lilililililili','',0,169000,0,'q07j6nqgogufmyqkpga77wptptcfybvrixkuwckcldf6pq8k7zcw6dtspyypcu3gc403m'),(104,'2020-06-18 10:38:48','Ahlam','08888888888','a','',1,692750,0,'57dvhpmsg6xqkltp8i8507ilc42rdpmoywhdih9aesmo2a7zcztezyg381fcyyojrka9u'),(105,'2020-06-18 11:05:01','Nanan Nuraeni','085755809930','Cipaganti Graha 2 Tahap 2 Nomor c 36, Kelurahan Cigending, Kecematan Ujungberung, Kota Bandung.','',0,93000,1,'57dvhpmsg6xqkltp8i8507ilc42rdpmoywhdih9aesmo2a7zcztezyg381fcyyojrka9u');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `orders_cart`
 --
 
+DROP TABLE IF EXISTS `orders_cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders_cart` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu_id` int(11) DEFAULT NULL,
   `order_id` int(11) DEFAULT NULL,
   `name` text NOT NULL,
   `harga` int(11) NOT NULL,
-  `jumlah` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `jumlah` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `orders_cart_ibfk_1` (`menu_id`),
+  KEY `orders_cart_ibfk_2` (`order_id`),
+  CONSTRAINT `orders_cart_ibfk_1` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  CONSTRAINT `orders_cart_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `orders_cart`
 --
 
-INSERT INTO `orders_cart` (`id`, `menu_id`, `order_id`, `name`, `harga`, `jumlah`) VALUES
-(1, 5, 666, 'Imam Supriadi', 55000, 1),
-(5, 5, 668, 'Gepuk Bandung', 18000, 1),
-(6, 6, 668, 'Pepes Tahu (5pcs)', 15000, 1),
-(7, 7, 668, 'Semur Jengkol', 20000, 3),
-(11, 6, 670, 'Pepes Tahu (5pcs)', 15000, 1),
-(12, 6, 671, 'Pepes Tahu (5pcs)', 15000, 1),
-(13, 10, 672, 'Ayam Serundeng (4pcs)', 55000, 1),
-(14, 8, 672, 'Ayam Bakar (4pcs)', 55000, 2);
+LOCK TABLES `orders_cart` WRITE;
+/*!40000 ALTER TABLE `orders_cart` DISABLE KEYS */;
+INSERT INTO `orders_cart` VALUES (1,NULL,100,'Asin Balado Kriuk (Rabu)',20000,1),(2,NULL,100,'Ayam Goreng Kremes(4ptg)',50000,2),(3,130,101,'Gepuk Bandung',18000,1),(4,128,102,'Ikan Mas Bumbu Kuning (2 Ekor)',25000,1),(5,129,102,'Tulang Jambal Seuhah',25000,1),(6,131,102,'Telur Balado (6 Butir)',25000,1),(7,132,102,'Oseng Teri Daun Pepaya',15000,1),(8,137,102,'Gulai Daun Singkong',15000,1),(9,136,102,'Tempe Mendoan (5ptg)',15000,1),(10,108,103,'Iga Penyet',50000,1),(11,115,103,'Sapo Tahu',30000,1),(12,117,103,'Capcay Goreng',25000,1),(13,118,103,'Cah Kangkung',20000,1),(14,121,103,'Nasi Goreng Ayam',25000,1),(15,123,103,'Jus Strawberry',19000,1),(16,130,104,'Gepuk Bandung',18000,1),(17,131,104,'Telur Balado (6 Butir)',25000,1),(18,129,104,'Tulang Jambal Seuhah',25000,1),(19,192,104,'WRB 1',24990,25),(20,128,105,'Ikan Mas Bumbu Kuning (2 Ekor)',25000,1),(21,129,105,'Tulang Jambal Seuhah',25000,1),(22,130,105,'Gepuk Bandung',18000,1),(23,131,105,'Telur Balado (6 Butir)',25000,1);
+/*!40000 ALTER TABLE `orders_cart` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- --------------------------------------------------------
+--
+-- Table structure for table `pengeluaran`
+--
+
+DROP TABLE IF EXISTS `pengeluaran`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pengeluaran` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `waktu` date NOT NULL,
+  `nominal` bigint(20) NOT NULL,
+  `keterangan` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `waktu` (`waktu`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pengeluaran`
+--
+
+LOCK TABLES `pengeluaran` WRITE;
+/*!40000 ALTER TABLE `pengeluaran` DISABLE KEYS */;
+INSERT INTO `pengeluaran` VALUES (1,'2020-06-17',320000,'beli Paket Streamix mas pras 10mbps'),(2,'2020-06-18',280000,'beli Indihome Paket phoenix di mas agus'),(8,'2020-06-16',600000,'Beli Bawang , daging ayam sapi ');
+/*!40000 ALTER TABLE `pengeluaran` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user_cart`
 --
 
+DROP TABLE IF EXISTS `user_cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_cart` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `cookie` varchar(69) DEFAULT NULL,
   `menu_id` int(11) DEFAULT NULL,
-  `amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `amount` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cookie` (`cookie`),
+  KEY `user_cart_ibfk_2` (`menu_id`),
+  CONSTRAINT `user_cart_ibfk_1` FOREIGN KEY (`cookie`) REFERENCES `cookie` (`cookie`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  CONSTRAINT `user_cart_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `user_cart`
 --
 
-INSERT INTO `user_cart` (`id`, `cookie`, `menu_id`, `amount`) VALUES
-(1, 'm6GyuRlOwgxOB7XTyDmSUBFcxn3jgrVIl45oAaNuVvtktoU08PO8FkKywFzPhaRg6tibf', 5, 4),
-(2, 'm6GyuRlOwgxOB7XTyDmSUBFcxn3jgrVIl45oAaNuVvtktoU08PO8FkKywFzPhaRg6tibf', 6, 5),
-(3, 'm6GyuRlOwgxOB7XTyDmSUBFcxn3jgrVIl45oAaNuVvtktoU08PO8FkKywFzPhaRg6tibf', 7, 2),
-(4, 'hX5sEC9RXKKXC3SRvwcrEJEbfsDYScLcpOTzSLyegJ3wL920P8lC5nowA3OKjaLtRAKzQ', 7, 3),
-(18, 'dwrbqnrmm41vg9tkfwmdszdba3fx11iw4cxh8hgnvc6dok6v7nsfmswjsxiys7r1pt9m6', 5, 1);
+LOCK TABLES `user_cart` WRITE;
+/*!40000 ALTER TABLE `user_cart` DISABLE KEYS */;
+INSERT INTO `user_cart` VALUES (7,'6daau4hlh15rn2x8bxdks1lpy3ocshquqwwg3auhnl53erm7opq7qy6b96vxlgp09wpwh',107,25),(8,'6daau4hlh15rn2x8bxdks1lpy3ocshquqwwg3auhnl53erm7opq7qy6b96vxlgp09wpwh',96,1),(11,'hyj6if3vpmbkshifxwvpull0rmmufuvc35hwd9v8ixq8y5srpmse0diglw73ywkrlv2ld',169,1),(15,'wi4o4qkvyg9ni6rnn7cwdnmn5sqdmzfgxwuods73uwu5zf4bdyzjutmxzk6x6g7a26frt',191,1000);
+/*!40000 ALTER TABLE `user_cart` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cookie`
---
-ALTER TABLE `cookie`
-  ADD PRIMARY KEY (`cookie`),
-  ADD UNIQUE KEY `cookie` (`cookie`);
-
---
--- Indexes for table `kategori`
---
-ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `menu`
---
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kategori_id` (`kategori_id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kue` (`kue`);
-
---
--- Indexes for table `orders_cart`
---
-ALTER TABLE `orders_cart`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `orders_cart_ibfk_1` (`menu_id`),
-  ADD KEY `orders_cart_ibfk_2` (`order_id`);
-
---
--- Indexes for table `user_cart`
---
-ALTER TABLE `user_cart`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cookie` (`cookie`),
-  ADD KEY `user_cart_ibfk_2` (`menu_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `kategori`
---
-ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `menu`
---
-ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=673;
---
--- AUTO_INCREMENT for table `orders_cart`
---
-ALTER TABLE `orders_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT for table `user_cart`
---
-ALTER TABLE `user_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `menu`
---
-ALTER TABLE `menu`
-  ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`kue`) REFERENCES `cookie` (`cookie`) ON DELETE SET NULL ON UPDATE NO ACTION;
-
---
--- Constraints for table `orders_cart`
---
-ALTER TABLE `orders_cart`
-  ADD CONSTRAINT `orders_cart_ibfk_1` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `orders_cart_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
-
---
--- Constraints for table `user_cart`
---
-ALTER TABLE `user_cart`
-  ADD CONSTRAINT `user_cart_ibfk_1` FOREIGN KEY (`cookie`) REFERENCES `cookie` (`cookie`) ON DELETE SET NULL ON UPDATE NO ACTION,
-  ADD CONSTRAINT `user_cart_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-06-18 17:29:15
