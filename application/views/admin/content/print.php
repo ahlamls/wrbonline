@@ -41,6 +41,8 @@
     </tbody>
   </table>
 
+  <p style="float:left">Kirim Kritik dan saran Anda disini : <br>
+<b>bit.ly/sarankritikWRBcatering</b></p>
 
   <p style="float:right">Subtotal : <b>Rp <?= $totalprice ?></b>
   <br>Metode Pembayaran : <b><?php if ($method == 0) { echo "Transfer";} else { echo "COD";}  ?></b></p>
