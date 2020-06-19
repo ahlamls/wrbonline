@@ -40,10 +40,13 @@
         <?= $content ?>
     </tbody>
   </table>
-
+<div >
   <p style="float:left">Kirim Kritik dan saran Anda disini : <br>
 <b>bit.ly/sarankritikWRBcatering</b></p>
 
   <p style="float:right">Subtotal : <b>Rp <?= $totalprice ?></b>
   <br>Metode Pembayaran : <b><?php if ($method == 0) { echo "Transfer";} else { echo "COD";}  ?></b></p>
+</div>
+<p style="  clear: both;			"><b>Promo</b> Setiap Pembelian Menggunakan Situs WRB Online akan mendapatkan salah satu reward berikut : Kerupuk 1 Toros , Aneka Snack atau Sambal Dadak . <br>Ketentuan : Promo Berlaku Selama Barang Tersedia</p>
+
 </body>
