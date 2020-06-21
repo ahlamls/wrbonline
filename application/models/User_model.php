@@ -28,7 +28,7 @@ class User_model extends CI_Model {
        if ($katdesc != "") {
          $asede.= "<p class='text-muted'>$katdesc</p>";
        }
-       $asede .="<div class='row'>";
+       $asede .="<div class='rownormal row'>";
        $kosongx = TRUE;
         $queryx = $this->db->query("SELECT * FROM `menu` WHERE `kategori_id` = '$katid'");
         foreach ($queryx->result() as $rowx)

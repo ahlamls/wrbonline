@@ -6,10 +6,17 @@
   color: white;
 
 }
-.row {
-  margin-right: 0px !important;
-margin-left: 0px !important;
+.rownormal {
+  margin-right: -15px !important;
+margin-left: -15px !important;
 }
+
+.row {
+  margin-right: 0px;
+margin-left: 0px;
+}
+
+
 
 .pesbar {
   display: inline-block !important;

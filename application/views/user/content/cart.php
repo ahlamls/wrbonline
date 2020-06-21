@@ -1,6 +1,6 @@
 <div id="cart">
 <h2>Keranjang</h2>
-<div class="row" id="ajax">
+<div class="rownormal row" id="ajax">
 Loading...
 </div>
 <hr>
