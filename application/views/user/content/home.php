@@ -4,7 +4,7 @@
 <div class="alert alert-info" role="alert">
 Selamat Datang di Website WRB Online ,  Kami membantu segala kebutuhan pelanggan yang berhubungan dengan layanan catering , mulai catering harian sampai acara-acara penting lainnya
 <br><br>
-<b>Batas Pemesanan Jam 9 Malam<br>Pesanan Diantar mulai dari jam 11:30</b>
+<b>Batas Pemesanan Jam 9 Pagi di hari tersebut<br>Pesanan Diantar mulai dari jam 11:30</b>
 <p>Jika Pesan Diatas Jam 9 Pagi maka hanya bisa memilih menu bertanda ready stock<br>
 
 Untuk Daerah Antapani dan Arcamanik Gratis Ongkir . Untuk Daerah Lain Menggunakan Gosend</div>
