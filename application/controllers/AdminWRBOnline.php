@@ -370,7 +370,23 @@ public function Edit($id = 0) {
     $data['id'] = $id;
     $data['nama'] = $this->admin_model->getMenuInfo($id,3);
     $katid = $this->admin_model->getMenuInfo($id,1);
-    $data['harga'] = $this->admin_model->getMenuInfo($id,5);
+		$data['harga'] = $this->admin_model->getMenuInfo($id,5);
+    $data['minorder'] = $this->admin_model->getMenuInfo($id,8);
+
+		if ($this->admin_model->getMenuInfo($id,6) == 1) {
+			$data['selectedmenu1'] = "selected";
+			$data['selectedmenu0']="";
+		} else {
+			$data['selectedmenu1'] = "";
+			$data['selectedmenu0']="selected";
+		}
+			if ($this->admin_model->getMenuInfo($id,7) == 1) {
+			$data['ready1'] = "selected";
+			$data['ready0']="";
+		} else {
+			$data['ready1'] = "";
+			$data['ready0']="selected";
+		}
     $data["katlist"] = $this->admin_model->listKat($katid);
     $this->load->view('admin/header',$data);
     $this->load->view('admin/content/editmenu',$data);

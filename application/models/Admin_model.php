@@ -166,8 +166,10 @@ class Admin_model extends CI_Model {
         $nama = $this->db->escape_str($_POST['nama']);
         $harga = $this->db->escape_str($_POST['harga']);
         $minorder = $this->db->escape_str($_POST['minorder']);
+        $ready = $this->db->escape_str($_POST['ready']);
+
         $gambar = $this->_uploadImage();
-        if ( ! $this->db->simple_query("INSERT INTO `menu` (`id`, `kategori_id`, `waktu`, `nama`, `gambar`, `harga`, `open`,`minorder`) VALUES (NULL, '$kategori', NOW(), '$nama', '$gambar', '$harga', '1','$minorder')"))
+        if ( ! $this->db->simple_query("INSERT INTO `menu` (`id`, `kategori_id`, `waktu`, `nama`, `gambar`, `harga`, `open`,`minorder`,`ready`) VALUES (NULL, '$kategori', NOW(), '$nama', '$gambar', '$harga', '1','$minorder','$ready')"))
           {
         die("Terjadi kesalahan " .  $this->db->error()); // Has keys 'code' and 'message'
         } else {
@@ -246,6 +248,10 @@ $asede = "";
                return $row->harga;
              } else if ($type == 6) {
                return $row->open;
+             }  else if ($type == 7) {
+               return $row->ready;
+             }   else if ($type == 8) {
+               return $row->minorder;
              } else {
                return "Invalid Type";
              }
@@ -261,7 +267,8 @@ $asede = "";
       $harga = $this->db->escape_str($_POST['harga']);
       $open = $this->db->escape_str($_POST['open']);
       $minorder = $this->db->escape_str($_POST['minorder']);
-      if ( ! $this->db->simple_query("UPDATE `menu` SET `kategori_id` = '$kategori', `nama` = '$nama', `harga` = '$harga', `open` = '$open' , `minorder` = '$minorder' WHERE `menu`.`id` = '$id'"))
+      $ready = $this->db->escape_str($_POST['ready']);
+      if ( ! $this->db->simple_query("UPDATE `menu` SET `kategori_id` = '$kategori', `nama` = '$nama', `harga` = '$harga', `open` = '$open' , `minorder` = '$minorder' , `ready` = '$ready' WHERE `menu`.`id` = '$id'"))
         {
       die("Terjadi kesalahan " .  $this->db->error()); // Has keys 'code' and 'message'
       } else {

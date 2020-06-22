@@ -35,7 +35,10 @@ class User_model extends CI_Model {
         {
           $gambar = $rowx->gambar;
           $name = $rowx->nama;
-
+          $ready = "";
+          if ($rowx->ready == 1) {
+          $ready = "<span class='badge badge-success'>Ready Stock</span>";
+          }
           $price = "Rp " . number_format($rowx->harga);
           $menuid = $rowx->id;
           $asede .= "<div class='col-6 col-md-3 ' style='padding:15px !important'>
@@ -43,7 +46,7 @@ class User_model extends CI_Model {
               <img src='/data/img/$gambar' class='card-img-top' alt='...'>
           <div class='card-body'>
           <p class='card-title'><b id='peloduk-$menuid'>$name</b></p>
-          <p class='card-text'>$price</p>
+          <p class='card-text'>$price $ready</p>
           <button onclick='addCart($menuid)' class='btn btn-sm btn-success w-100'><b>+</b> Tambah</button>
           </div>
             </div>

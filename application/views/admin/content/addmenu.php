@@ -30,6 +30,14 @@
    <input type="file" class="form-control-file" required="" id="gambar" name="gambar">
  </div>
 
+ <div class="form-group">
+     <label for="open">Ready Stock</label>
+     <select class="form-control" id="open" required="" name="ready">
+        <option value="1">Ya</option>
+        <option selected value="0">Tidak</option>
+     </select>
+   </div>
+
 <button class="btn btn-success w-100" type="submit">Buat Menu</button>
 
 </form>
