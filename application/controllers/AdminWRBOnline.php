@@ -125,7 +125,10 @@ public function analisaMenu() {
       header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
       die("Belum Login");
     }
-    $data['content'] = $this->admin_model->analisaMenu();
+    $data['content'] = $this->admin_model->analisaMenu(1);
+		$data['content2'] = $this->admin_model->analisaMenu(2);
+		$data['content3'] = $this->admin_model->analisaMenu(3);
+		$data['content4'] = $this->admin_model->analisaMenu(4);
 
     $this->load->view('admin/header',$data);
     $this->load->view('admin/content/analisa-menu',$data);

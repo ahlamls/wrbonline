@@ -277,14 +277,36 @@ $asede = "";
       }
     }
 
-      public function analisaMenu() {
+      public function analisaMenu($type = 1) {
         $asede = "";
-        $sql = "SELECT `orders_cart`.`menu_id` , COUNT(*) AS totalSold
-      FROM `orders`
-          LEFT JOIN `orders_cart` ON `orders_cart`.`order_id` = `orders`.`id`
-          WHERE `orders`.`paid` = '1'
-          GROUP BY `menu_id` ORDER BY `totalSold` DESC";
-          $query = $this->db->query($sql);
+        if ($type == 1) {
+        $sql = "SELECT `orders_cart`.`menu_id`, SUM(jumlah) AS totalSold FROM `orders` LEFT JOIN `orders_cart` ON `orders_cart`.`order_id` = `orders`.`id` WHERE `paid` = 1 GROUP BY `menu_id` ORDER BY `totalSold` DESC";
+
+      } else if ($type == 2) {
+        $date= date("Y-m-d");
+        $sql = "SELECT `orders_cart`.`menu_id` , `orders`.`waktu`, SUM(jumlah) AS totalSold
+FROM `orders`
+    LEFT JOIN `orders_cart` ON `orders_cart`.`order_id` = `orders`.`id`
+    WHERE `paid` = 1 AND `waktu` LIKE '$date%'
+    GROUP BY `menu_id` ORDER BY `totalSold` DESC";
+  } else if ($type == 3) {
+        $date= date("Y-m-d");
+        $sql = "SELECT `orders_cart`.`menu_id` , `orders`.`waktu`, SUM(jumlah) AS totalSold
+FROM `orders`
+    LEFT JOIN `orders_cart` ON `orders_cart`.`order_id` = `orders`.`id`
+    WHERE `paid` = 1 AND `waktu` BETWEEN CURDATE() - INTERVAL 7 DAY AND NOW()
+    GROUP BY `menu_id` ORDER BY `totalSold` DESC";
+  } else if ($type == 4) {
+        $date= date("Y-m-d");
+        $sql = "SELECT `orders_cart`.`menu_id` , `orders`.`waktu`, SUM(jumlah) AS totalSold
+FROM `orders`
+    LEFT JOIN `orders_cart` ON `orders_cart`.`order_id` = `orders`.`id`
+    WHERE `paid` = 1 AND `waktu` BETWEEN CURDATE() - INTERVAL 30 DAY AND NOW()
+    GROUP BY `menu_id` ORDER BY `totalSold` DESC";
+      }
+
+
+        $query = $this->db->query($sql);
 
       foreach ($query->result() as $row)
       {
