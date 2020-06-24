@@ -643,5 +643,95 @@ FROM `orders`
         }
       }
 
+      public function getTestimoniInfo($id,$type) {
+          $id = $this->db->escape_str($id);
+        $query = $this->db->query("SELECT * FROM `testimoni` WHERE `id` = '$id' LIMIT 0,1");
+
+        foreach ($query->result() as $row)
+        {
+          if ($type == 1) {
+            return $row->id;
+          } else if ($type == 2) {
+            return $row->nama;
+          } else if ($type == 3) {
+            return $row->rating;
+          } else if ($type == 4) {
+            return $row->testi;
+          }
+        }
+      }
+
+      public function getTesti() {
+        $query = $this->db->query("SELECT * FROM `testimoni` ORDER BY id DESC ");
+           $asede = "";
+            foreach ($query->result() as $row)
+            {
+              $aidi = $row->id;
+              $nama = $row->nama;
+              $waktu = $row->waktu;
+              $testi = substr($row->testi,0,64) . "...";
+              $rating = "";
+              for ($x = 0; $x < $row->rating; $x++) {
+                 $rating .=  "<i class='fas fa-star'></i>";
+               }
+
+              $asede .= "    <tr>
+      <td>$aidi</th>
+      <td>$waktu</th>
+      <td>$nama</th>
+      <td>$testi</th>
+      <td>$rating</th>
+      <td><a href='/AdminWRBOnline/edittesti/$aidi'>Edit</a> | <a href='/AdminWRBOnline/deletetesti/$aidi'>Hapus</a></th>
+    </tr>";
+            }
+
+            return $asede;
+
+      }
+
+      public function handleEditTesti($id) {
+        $id = $this->db->escape_str($id);
+
+        $nama = $this->db->escape_str($_POST['nama']);
+        $rating = $this->db->escape_str($_POST['rating']);
+        $testi = $this->db->escape_str($_POST['testi']);
+
+        if ( ! $this->db->simple_query("UPDATE `testimoni` SET `nama` = '$nama', `rating` = '$rating', `testi` = '$testi' WHERE `testimoni`.`id` = '$id'"))
+          {
+        die("Terjadi kesalahan " .  $this->db->error()); // Has keys 'code' and 'message'
+        } else {
+        header("Location: /AdminWRBOnline/testi/");
+        die("sukses");
+        }
+      }
+
+      public function handleAddTesti() {
+        $nama = $this->db->escape_str($_POST['nama']);
+        $rating = $this->db->escape_str($_POST['rating']);
+        $testi = $this->db->escape_str($_POST['testi']);
+
+
+        if ( ! $this->db->simple_query("INSERT INTO `testimoni` (`id`, `waktu`, `nama`, `testi`, `rating`) VALUES (NULL, NOW(), '$nama', '$testi', '$rating')"))
+          {
+        die("Terjadi kesalahan " .  var_dump($this->db->error())); // Has keys 'code' and 'message'
+        } else {
+        header("Location: /AdminWRBOnline/testi/");
+        die("sukses");
+        }
+      }
+
+      public function deleteTesti($id) {
+        $id = $this->db->escape_str($id);
+
+        //
+        if ( ! $this->db->simple_query("DELETE FROM `testimoni` WHERE `testimoni`.`id` = '$id'"))
+          {
+        die("Terjadi kesalahan " .  $this->db->error()); // Has keys 'code' and 'message'
+        } else {
+        header("Location: /AdminWRBOnline/testi/");
+        die("sukses");
+        }
+      }
 
     }
+    ?>

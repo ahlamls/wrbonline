@@ -35,9 +35,12 @@ Untuk Daerah Antapani dan Arcamanik Gratis Ongkir . Untuk Daerah Lain Menggunaka
   <div class="">
 
     <center>
-    <button type="button"  data-toggle="modal" data-target="#lacakModal" class="btn btn-sm btn-primary">Lacak Pesanan</button>
-    <a href="https://instagram.com/wrb_catering"><button type="button" class="btn btn-sm btn-secondary">Instagram</button></a>
-    <a href="https://wa.me/6281398741770?text=Assalamualaikum"><button type="button" class="btn btn-sm btn-success">WA Admin</button></a>
+    <button type="button"  data-toggle="modal" data-target="#lacakModal" class="btn btn-sm pa5 btn-primary">Lacak Pesanan</button>
+    <a href="https://instagram.com/wrb_catering"><button type="button" class="btn btn-sm pa5 btn-secondary">Instagram</button></a>
+    <a href="https://wa.me/6281398741770?text=Assalamualaikum"><button type="button" class="btn pa5 btn-sm btn-success">WA Admin</button></a>
+    <button type="button" class="pa5 btn btn-sm btn-info" data-toggle="modal" data-target="#testiModal">
+      Testimoni
+    </button>
 </center>
   </div>
   <hr>
@@ -125,6 +128,25 @@ function gotoorder() {
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
         <button type="button" onclick="gotoorder()" class="btn btn-primary">Cek Status Pesanan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="testiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-info text-white">
+        <h5 class="modal-title" id="testiModalTitle">Testimoni</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <?= $testi ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
       </div>
     </div>
   </div>

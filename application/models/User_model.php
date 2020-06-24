@@ -367,4 +367,27 @@ $nama = "Catering Harian";
 
 
    }
+
+   public function getTesti(){
+     $query = $this->db->query("SELECT * FROM `testimoni` ORDER BY id DESC ");
+        $asede = "";
+         foreach ($query->result() as $row)
+         {
+           $nama = $row->nama;
+           $waktu = $row->waktu;
+           $testi = $row->testi;
+           $rating = "";
+           for ($x = 0; $x < $row->rating; $x++) {
+              $rating .=  "<i class='fas fa-star'></i>";
+            }
+
+           $asede .= "  <b>$nama</b><br>
+      <p class='text-muted'>$waktu | $rating</p>
+      <p>$testi</p>
+      <hr>";
+         }
+
+         return $asede;
+
+   }
 }

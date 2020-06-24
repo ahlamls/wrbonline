@@ -253,7 +253,7 @@ public function deleteMenu($id) {
     if ($id == 0 ) {
       die("ID tidak valid");
     }
-    $this->admin_model->deleteMenu  ($id);
+    $this->admin_model->deleteMenu($id);
 }
 
 public function addMenu() {
@@ -433,7 +433,78 @@ public function handleEditMenu($id) {
 
 }
 
+public function Testi() {
+  if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+    $data['content'] = $this->admin_model->getTesti();
+    $this->load->view('admin/header',$data);
+    $this->load->view('admin/content/testi',$data);
 
+      $this->load->view('admin/footer',$data);
+}
+
+public function edittesti($id = 0) {
+  if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+    if ($id == 0 ) {
+      die("ID tidak valid");
+    }
+    $data['id'] = $id;
+    $data['nama'] = $this->admin_model->getTestimoniInfo($id,2);
+		$data['rating'] = $this->admin_model->getTestimoniInfo($id,3);
+		$data['testi'] = $this->admin_model->getTestimoniInfo($id,4);
+
+
+    $this->load->view('admin/header',$data);
+    $this->load->view('admin/content/edittesti',$data);
+
+      $this->load->view('admin/footer',$data);
+}
+
+public function handleEditTesti($id) {
+  if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+
+    $this->admin_model->handleEditTesti($id);
+
+}
+
+public function deleteTesti($id) {
+  if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+    if ($id == 0 ) {
+      die("ID tidak valid");
+    }
+    $this->admin_model->deleteTesti($id);
+}
+
+public function handleAddTesti() {
+  if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+
+    $this->admin_model->handleAddTesti();
+
+}
 
 
 }
