@@ -332,7 +332,7 @@ class User_model extends CI_Model {
      if ($kat != 0 AND $kat <= 7) {
 	$kat = 7;
 	}
-	$query = $this->db->query("SELECT * FROM `kategori` WHERE `id` > '6'");
+	$query = $this->db->query("SELECT * FROM `kategori` WHERE `id` > '6' ORDER BY `urut` ASC ");
      $asede = "";
       foreach ($query->result() as $row)
       {
