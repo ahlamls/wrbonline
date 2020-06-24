@@ -66,7 +66,7 @@ class Admin_model extends CI_Model {
                 $status
                 <td>Rp $totalprice</td>
                 <td>$metode</td>
-                <td><a href='/AdminWRBOnline/print/$aidi' target='_blank' >Print</a> | <a href='/AdminWRBOnline/delete/$aidi'>Hapus</a></td>
+                <td><a href='/AdminWRBOnline/print/$aidi' target='_blank' >Print</a></td>
               </tr>";
         }
 
@@ -320,6 +320,78 @@ FROM `orders`
       return $asede;
       }
 
+      public function excel($y=0,$m=0,$d=0,$type = 1) {
+        $m = (int) $this->db->escape_str($m);
+        $y = (int) $this->db->escape_str($y);
+        $d = (int) $this->db->escape_str($d);
+        $yx = (String)$y;
+        $mx = (String)$m;
+        if ($m < 10) {
+          $mx = "0" . (String) $mx;
+        } else {
+          $mx = (String) $mx;
+        }
+        $dx = (String)$d;
+        if ($d < 10) {
+          $dx = "0" . (String) $dx;
+        } else {
+          $dx = (String) $dx;
+        }
+
+        if ($y == 0 OR $m == 0 OR $d == 0) {
+          $curdate = date("Y-m-d");
+        } else {
+          $curdate = $y . "-" . $mx . "-" . $dx;
+        }
+
+        $asede = "";
+
+        if ($type == 2) {
+          $sql = "SELECT * FROM `orders` WHERE `paid` = '1'  AND `waktu` LIKE '$curdate%'";
+        } else {
+          $sql = "SELECT * FROM `orders` WHERE `paid` = '1' ";
+
+        }
+        $query = $this->db->query($sql);
+
+        foreach ($query->result() as $row)
+        {
+          $aidi = $row->id;
+          $waktu = $row->waktu;
+          $nama = $row->nama;
+          $alamat = $row->alamat;
+          $info = $row->info;
+          $total = number_format($row->totalprice);
+          if ($row->method == 0) {
+            $metode = "Transfer";
+          } else {
+            $metode = "COD";
+          }
+          $menu = "";
+              $queryx = $this->db->query("SELECT * FROM `orders_cart` WHERE `order_id` = '$aidi'");
+
+              foreach ($queryx->result() as $rowx)
+              {
+                $menu .= $rowx->name . "(Rp " . number_format($rowx->harga) . "x" . $rowx->jumlah . "),";
+              }
+
+            $asede .="
+              <tr>
+                <td><b>$aidi</b></td>
+                <td>$waktu</td>
+                <td>$nama</td>
+                <td>$alamat</td>
+                  <td>$info</td>
+                  <td>$total</td>
+                  <td>$metode</td>
+                  <td>$menu</td>
+              </tr>";
+        }
+        return $asede;
+
+
+      }
+
       public function analisaOmset($type) {
         if ($type == 1) {
           $sql = "SELECT totalprice FROM `orders` WHERE `paid` = 1
@@ -446,7 +518,7 @@ FROM `orders`
             <td>Rp $penghasilan</td>
             <td class='$opit'>Rp $profit</td>
             <td>$keterangan</td>
-            <td><a href='/AdminWRBOnline/editPengeluaran/?d=$dx&m=$mx&y=$yx'>Edit</a></td>
+            <td><a href='/AdminWRBOnline/editPengeluaran/?d=$dx&m=$mx&y=$yx'>Edit</a> | <a href='/AdminWRBOnline/excel/?d=$dx&m=$mx&y=$yx'>Excel</a></td>
           </tr>";
         }
         $tpenghasilan = number_format($tpenghasilan);

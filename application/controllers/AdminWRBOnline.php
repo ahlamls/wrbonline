@@ -136,6 +136,28 @@ public function analisaMenu() {
       $this->load->view('admin/footer',$data);
 }
 
+
+public function Excel() {
+	if (isset($_SESSION['aid'])){
+     $aaidi = $_SESSION['aid'];
+    } else {
+      header("Location: /AdminWRBOnline/login/?msg=Silahkan Login Untuk Melanjutkan");
+      die("Belum Login");
+    }
+
+		if (!isset($_GET['y']) OR !isset($_GET['m']) OR !isset($_GET['d'])) {
+			$data['content'] = $this->admin_model->excel();
+			$data['title'] = "Seumur Hidup";
+			$data['curtime'] = "AllTime-" . date("Y-m-d H:i:s");
+		} else {
+			$data['content'] = $this->admin_model->excel($_GET['y'],$_GET['m'],$_GET['d'],2);
+			$data['title'] = "Tanggal " . $_GET['d'] . "-" . $_GET['m'] . "-" . $_GET['y'] ;
+			$data['curtime'] = "Daily" . $_GET['d'] . "-" . $_GET['m'] . "-" . $_GET['y'];
+
+		}
+		$this->load->view('admin/content/excel',$data);
+}
+
 public function analisaOmset() {
   if (isset($_SESSION['aid'])){
      $aaidi = $_SESSION['aid'];
@@ -302,7 +324,9 @@ public function Pengeluaran() {
 		if ($month > 12) {
 			die("NGACO KAMU!");
 		}
-
+		$data['m'] = date("m");
+		$data['y'] = date("Y");
+		$data['d'] = date("d");
 		$data['content'] = $this->admin_model->getPengeluaran($month,$year);
 		$this->load->view('admin/header',$data);
 		$this->load->view('admin/content/pengeluaran',$data);

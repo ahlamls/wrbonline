@@ -30,6 +30,10 @@
 <button type="submit" class="btn btn-success">Masukan/Ubah Pengeluaran</button>
 </form>
 <hr>
+<a href="/AdminWRBOnline/excel/?y=<?=$y?>&m=<?=$m?>&d=<?=$d?>"><button type="button" class="btn btn-primary">Excel Hari ini</button></a>
+<a href="/AdminWRBOnline/excel/"><button type="button" class="btn btn-info">Excel Seumur Hidup</button></a>
+
+<hr>
 <h3>Daftar Pengeluaran (<?= $m . "-" . $y?>)</h3>
 <p class="text-muted">Penghasilan dari Order yang sudah lunas/dibayar</p>
 <div class="table-responsive">
