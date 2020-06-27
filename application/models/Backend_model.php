@@ -21,6 +21,7 @@ class Backend_model extends CI_Model {
    public function cekApdet($v) {
      $v =  $this->db->escape_str(base64_decode($v));
      $currentAppVersion = 1;
+     die($v . $currentAppVersion);
      $downloadLink = "https://online.wrbcatering.id";
 
      if ($currentAppVersion !== $v) {
