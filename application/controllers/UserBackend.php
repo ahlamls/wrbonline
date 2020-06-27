@@ -45,12 +45,9 @@ $this->backend_model->getKatImgList();
 }
 
 public function getKategori() {
-	
+
 }
 
 public function getMenuList($id = 0) {
 
 }
-
-
-?>
