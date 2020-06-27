@@ -10,8 +10,8 @@ class Backend_model extends CI_Model {
    }
 
    public function setorKue($kue,$sayamaleus) {
-     $kue =  $this->db->escape_str(base64_encode($kue));
-      $sayamaleus =  $this->db->escape_str(base64_encode($sayamaleus));
+     $kue =  $this->db->escape_str(base64_decode($kue));
+      $sayamaleus =  $this->db->escape_str(base64_decode($sayamaleus));
      if ($this->db->simple_query("INSERT INTO `cookie` (`cookie`, `ua`, `name`, `nohp`, `alamat`) VALUES ('$kue', '$sayamaleus', '', '', '');")) {
        die("sukses");
      }
@@ -19,7 +19,7 @@ class Backend_model extends CI_Model {
    }
 
    public function cekApdet($v) {
-     $v =  $this->db->escape_str(base64_encode($v));
+     $v =  $this->db->escape_str(base64_decode($v));
      $currentAppVersion = 1;
      $downloadLink = "https://online.wrbcatering.id";
 
