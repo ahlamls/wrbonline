@@ -31,6 +31,7 @@ class Backend_model extends CI_Model {
         $response->message = "Aplikasi sudah lawas . Silahkan Perbarui Aplikasi dengan versi terbaru untuk menggunakan aplikasi ini";
         die(json_encode($response));
       } else {
+        $response = new stdClass();
         $response->success = 1;
         $response->uptodate = 1;
         $response->url = $downloadLink;
@@ -70,6 +71,7 @@ class Backend_model extends CI_Model {
       die(json_encode($response));
 
     } else {
+      $response = new stdClass();
       $response->success = 0;
       $response->message = "Terjadi kesalahan saat mendapatkan daftar kategori";
       die(json_encode($response));
