@@ -24,6 +24,7 @@ class Backend_model extends CI_Model {
      $downloadLink = "https://online.wrbcatering.id";
 
      if ($currentAppVersion !== $v) {
+        $response = new stdClass();
         $response->success = 1;
         $response->uptodate = 0;
         $response->url = $downloadLink;
@@ -44,6 +45,7 @@ class Backend_model extends CI_Model {
      $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` > '6' ORDER BY `urut` ASC ");
 
       if ($query) {
+        $response = new stdClass();
        $response->success = 1;
        $arraylist = [];
       foreach ($query->result() as $row)
@@ -56,7 +58,7 @@ class Backend_model extends CI_Model {
        if ($aidi == 7) {
       $nama = "Catering Harian";
       }
-
+      $myObj= new stdClass();
       $myObj->id = $aidi;
       $myObj->name = $nama;
       $myObj->gambar = $gambar;
