@@ -13,8 +13,13 @@
     <title>WRB Online</title>
   </head>
   <body>
-
-    <nav class="navbar sticky-top navbar-dark bg-dark text-white">
+<?php
+$dnone = "";
+if (strpos($_SERVER['HTTP_USER_AGENT'], 'WRBAPK/')) {
+  $dnone = "d-none";
+}
+?>
+    <nav class="navbar sticky-top navbar-dark bg-dark text-white <?=$dnone?>">
   <a class="navbar-brand" href="/">WRB Online</a>
 
 
