@@ -22,6 +22,7 @@
   <p>Waktu : <?= $waktu ?></p>
   <p>Alamat: <?= $alamat ?></p>
   <p>Info / Keterangan : <?= $info ?></p>
+  <p>Metode Pemesanan : <?= $platform ?></p>
 
 </div>
 

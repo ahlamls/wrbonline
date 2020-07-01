@@ -211,6 +211,11 @@ public function print($id = 0) {
      $data['paid'] = $this->user_model->getOrderInfo($id,6);
      $data['totalprice'] = number_format($this->user_model->getOrderInfo($id,7));
      $data['method'] = $this->user_model->getOrderInfo($id,8);
+		 if (strpos($this->user_model->getOrderInfo($id,9),"android-") !== false) {
+			 $data['platform'] = "Aplikasi Android";
+		 } else {
+			 $data['platform'] = "Website";
+		 }
 
 
 

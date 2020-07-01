@@ -66,7 +66,7 @@ class Admin_model extends CI_Model {
                 $status
                 <td>Rp $totalprice</td>
                 <td>$metode</td>
-                <td><a href='/AdminWRBOnline/print/$aidi' target='_blank' >Print</a></td>
+                <td><a href='/AdminWRBOnline/print/$aidi' target='_blank' >Print</a> | <a href='/AdminWRBOnline/delete/$aidi' target='_blank' >Hapus</a></td>
               </tr>";
         }
 
