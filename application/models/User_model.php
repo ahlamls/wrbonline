@@ -16,7 +16,11 @@ class User_model extends CI_Model {
        $query = $this->db->query("SELECT * FROM `kategori`");
      } else if ($kat == 7) {
 	$query = $this->db->query("SELECT * FROM `kategori` WHERE `id` <= 7");
+} else if ($kat == 24) {
+  $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` >= 20 AND `id` <= 24");
+  
 }else {
+
        $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` = $kat");
      }
      foreach ($query->result() as $row)
@@ -332,7 +336,7 @@ class User_model extends CI_Model {
      if ($kat != 0 AND $kat <= 7) {
 	$kat = 7;
 	}
-	$query = $this->db->query("SELECT * FROM `kategori` WHERE `id` > '6' ORDER BY `urut` ASC ");
+	$query = $this->db->query("SELECT * FROM `kategori`  WHERE `id` > '6' AND `id` != 20 AND `id` != 21 AND `id` != 22 AND `id` != 23 ORDER BY `urut` ASC");
      $asede = "";
       foreach ($query->result() as $row)
       {
@@ -345,11 +349,15 @@ class User_model extends CI_Model {
         $nama = "<b>" . $nama . "</b>";
       	if ($aidi == 7) {
 	$nama = "<b>" . "Catering Harian" . "</b>";
-	}
+} else if ($aidi == 24) {
+  $nama = "<b>Katering Guru/Karyawan</b>";
+}
 	} else {
         $active = "";
 	if ($aidi == 7) {
 $nama = "Catering Harian";
+} else if ($aidi == 24) {
+  $nama = "Katering Guru/Karyawan";
 }
       }
 

@@ -43,7 +43,7 @@ class Backend_model extends CI_Model {
 
    public function getKatImgList() {
 
-     $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` > '6' ORDER BY `urut` ASC ");
+	$query = $this->db->query("SELECT * FROM `kategori`  WHERE `id` > '6' AND `id` != 20 AND `id` != 21 AND `id` != 22 AND `id` != 23 ORDER BY `urut` ASC");
 
       if ($query) {
         $response = new stdClass();
@@ -58,7 +58,9 @@ class Backend_model extends CI_Model {
 
        if ($aidi == 7) {
       $nama = "Catering Harian";
-      }
+    } else if ($aidi == 24) {
+      $nama = "Katering Guru/Karyawan";
+    }
       $myObj= new stdClass();
       $myObj->id = $aidi;
       $myObj->name = $nama;
@@ -85,7 +87,9 @@ class Backend_model extends CI_Model {
    $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` <= 7");
     } else if ($kat == 7) {
  $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` <= 7");
- }else {
+} else if ($kat == 24) {
+  $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` >= 20 AND `id` <= 24");
+} else {
       $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` = $kat");
     }
 
