@@ -93,4 +93,13 @@ public function submitCart() {
 
 }
 
+public function notice() {
+		$data['memek'] = "memek";
+		$this->load->view('user/head',$data);
+
+		$this->load->view('user/content/notice',$data);
+		$this->load->view('user/footer',$data);
+
+}
+
 }
