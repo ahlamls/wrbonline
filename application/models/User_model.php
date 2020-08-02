@@ -13,12 +13,12 @@ class User_model extends CI_Model {
      $asede = "";
      $kosong = TRUE;
      if ($kat == 0) {
-       $query = $this->db->query("SELECT * FROM `kategori`");
+       $query = $this->db->query("SELECT * FROM `kategori` ");
      } else if ($kat == 7) {
 	$query = $this->db->query("SELECT * FROM `kategori` WHERE `id` <= 7");
 } else if ($kat == 24) {
   $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` >= 20 AND `id` <= 24");
-  
+
 }else {
 
        $query = $this->db->query("SELECT * FROM `kategori` WHERE `id` = $kat");
@@ -34,7 +34,7 @@ class User_model extends CI_Model {
        }
        $asede .="<div class='rownormal row'>";
        $kosongx = TRUE;
-        $queryx = $this->db->query("SELECT * FROM `menu` WHERE `kategori_id` = '$katid'");
+        $queryx = $this->db->query("SELECT * FROM `menu` WHERE `kategori_id` = '$katid' AND `open` = '1'");
         foreach ($queryx->result() as $rowx)
         {
           $gambar = $rowx->gambar;
